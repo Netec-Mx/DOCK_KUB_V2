@@ -1,9 +1,12 @@
-# title: Netec Learning Labs
+title: Netec Learning Labs
 description: Plataforma de Laboratorios · Introducción a Docker y Kubernetes
 
 # Para project site:
 url: "https://netec-mx.github.io" # CAMBIAR LA CUENTA
 baseurl: "/DOCK_KUB_V2"   # CLAVE para que no se rompan rutas siempre cambiar
+
+# Nombre completo del repo (owner/repo)
+repository: netec-mx/DOCK_KUB_V2
 
 # Para local Recuerda ajustar rutas en los archivos
 # url: "http://localhost:4000"
@@ -17,6 +20,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-github-metadata 
 
 exclude:
   - .bundle
