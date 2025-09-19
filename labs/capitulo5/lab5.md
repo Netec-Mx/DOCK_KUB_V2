@@ -62,7 +62,7 @@ Generar una estructura clara para mapear código, configuración y scripts de in
 
 - **Paso 4.** Selecciona la terminal **Git Bash**, da clic como lo muestra la imagen.
 
-  ![micint]({{ page.images_base | relative_url }}/2.png)
+  ![micint]({{ page.images_base | relative_url }}/20.png)
 
 - **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**:
 
