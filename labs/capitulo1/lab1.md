@@ -436,6 +436,7 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
 
 - **Paso 28.** Copia y pega el siguiente código dentro de **app.js**:
 
+  > **NOTA:**
   - **Carga inicial**: obtiene `/contactos` y pinta filas en la tabla.
   - **Render seguro**: usa `escapeHtml` para evitar inyección al mostrar nombre/teléfono.
   - **Delegación de eventos**: botones **Editar**/**Borrar** se enlazan tras renderizar.
@@ -444,6 +445,7 @@ Construir una página **HTML/CSS/JS** que interactúe con el backend para agrega
   - **Borrado**: `borrarContacto()` confirma y hace `DELETE`, luego recarga la lista.
   - **Reset UI**: `resetForm()` limpia inputs y restaura botones (**Agregar** / oculta **Cancelar**).
   - **Estado en memoria**: reutiliza `contactos` cargados para ubicar el registro a editar.
+  {: .lab-note .info .compact}
 
   ```js
   const form = document.getElementById('form');
