@@ -167,7 +167,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   {: .lab-note .info .compact}
 
   ```bash
-  ls -la
+  ls -la -R
   ```
 
   ![micint]({{ page.images_base | relative_url }}/3.png)

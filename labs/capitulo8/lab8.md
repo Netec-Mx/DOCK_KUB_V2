@@ -262,8 +262,8 @@ Compilar, etiquetar y publicar la imagen para que Kubernetes pueda hacer **pull*
 
 - **Paso 17.** Estas son **2 opciones** para ingresa a tu cuenta de **Docker Hub** dependiendo de tu caso.
 
-  - Si ya tienes cuenda da clic [**AQUÍ - Iniciar Sesión**](https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk)
-  - Si no tienes cuenta da clic [**AQUÍ - Crear cuenta**](https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw)
+  - Si ya tienes cuenda da clic <a href="https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Iniciar Sesión</strong></a>.
+  - Si no tienes cuenta da clic <a href="https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Crear cuenta</strong></a>.
 
 - **Paso 18.** Ya que estes autenticado en la cuenta de **Docker Hub** da clic en **Repositories** del menu lateral izquierdo.
 
@@ -334,7 +334,7 @@ Compilar, etiquetar y publicar la imagen para que Kubernetes pueda hacer **pull*
 
   ![micint]({{ page.images_base | relative_url }}/11.png)
 
-- **Paso 28.** Verifica la imagen en tu cuenta [Repositorios Docker Hub](https://hub.docker.com/repositories)
+- **Paso 28.** Verifica la imagen en tu cuenta <a href="https://hub.docker.com/repositories" target="_blank" rel="noopener noreferrer"><strong>Repositorios Docker Hub</strong></a>.
 
   > **NOTA:**
   - Publicar en **Docker Hub** facilita la portabilidad del despliegue (cualquier clúster puede usarla).
