@@ -1,4 +1,4 @@
-# Práctica 7. Despliegue de una aplicación Node.js. en Kubernetes
+# Práctica 7. Despliegue de una aplicación Node.js en Kubernetes
 
 ## Objetivos
 Al finalizar la práctica, serás capaz de:
