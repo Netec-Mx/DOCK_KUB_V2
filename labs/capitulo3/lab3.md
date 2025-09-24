@@ -1,27 +1,27 @@
 # Práctica 3. Construcción de una imagen Docker multietapa
 
-## Objetivos:
+## Objetivos
 Al finalizar la práctica, serás capaz de:
 - Construir imágenes Docker optimizadas utilizando la técnica de **multi-stage builds**, comparando el tamaño de la imagen con y sin multietapa. Usaremos como ejemplo una aplicación Node.js con Express que sirva un frontend estático y una API REST.
 
-## Duración aproximada:
+## Duración aproximada
 
 - 60 minutos.
 
-## 🔍 Objetivo visual:
+## 🔍 Objetivo visual
 
+## Instrucciones
 
-prerequisites:
+**Prerrequisitos**
   - Visual Studio Code instalado
   - Docker Desktop instalado y en ejecución
   - Git Bash configurado como terminal por defecto en VS Code
   - Conocimientos básicos de Node.js y Docker
-  - Haber completado la practica 1
+  - Haber completado la práctica 1
+    
 introduction:
   - Las **imágenes multi-etapa** permiten separar el proceso de construcción (instalación de dependencias y compilación de frontend) del de ejecución. Con esto se reduce el tamaño de la imagen final y se evitan dependencias innecesarias en producción. En esta práctica construiremos una aplicación Node.js con un backend REST y un frontend estático en React simulado con archivos preconstruidos, para demostrar el impacto de los multi-stage builds.
-slug: lab3
-lab_number: 3
-final_result: >
+
   El estudiante habrá construido una aplicación Node.js contenerizada con un **Dockerfile multi-etapa**, obteniendo una imagen ligera y optimizada, validando que la aplicación funciona correctamente y que el tamaño de la imagen se reduce respecto a una construcción tradicional.
 notes: 
   - Multi-stage es aplicable a múltiples lenguajes (Java, Go, .NET).
@@ -32,8 +32,6 @@ references:
     url: https://docs.docker.com/develop/develop-images/multistage-build/
   - text: Docker Hub - Node Images
     url: https://hub.docker.com/_/node
-
-## Instrucciones
 
 
 ### Tarea 1. Preparar la estructura del proyecto
