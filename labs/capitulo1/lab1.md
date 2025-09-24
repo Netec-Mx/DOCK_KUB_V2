@@ -1,24 +1,27 @@
----
-layout: lab
-title: "Práctica 1: Despliegue de una aplicación Node.js simple con Docker"
-permalink: /capitulo1/lab1/
-images_base: /labs/capitulo1/img
-duration: "60 minutos"
-objective:
-  - El objetivo de esta práctica es que el participante aprenda a crear, ejecutar y contenerizar una aplicación simple en **Node.js con Express** que actúe como una agenda de contactos, junto con un frontend HTML básico. Al finalizar, el estudiante comprenderá cómo usar Docker para construir imágenes, ejecutar contenedores y validar la aplicación de forma local.
-prerequisites:
+# Práctica 1. Despliegue de una aplicación Node.js simple con Docker
+
+##  Objetivo
+Al finalizar la práctica, serás capaz de:
+- Crear, ejecutar y contenerizar una aplicación simple en Node.js con Express que actúe como una agenda de contactos, junto con un frontend HTML básico. 
+- Comprender cómo usar Docker para construir imágenes, ejecutar contenedores y validar la aplicación de forma local.
+
+## Duración aproximada
+- 60 minutos.
+
+## Objetivo visual
+
+## Instrucciones
+**Prerrequisitos**
   - Visual Studio Code instalado
   - Extensión de **Docker** instalada en VS Code (opcional pero recomendable)
   - Git Bash configurado como terminal por defecto en VS Code
   - Docker Desktop instalado y en ejecución
   - Node.js (versión LTS recomendada. 20.x o superior)
   - Navegador web (Chrome, Edge o Firefox)
-introduction:
-  - En esta práctica construiremos una aplicación **Agenda de contactos**, únicamente memoria. El backend estará hecho con **Node.js + Express**, mientras que el frontend será una página HTML con un formulario y una tabla para mostrar los contactos. Finalmente, aprenderemos a contenerizarla con Docker y ejecutarla de manera local.
-slug: lab1
-lab_number: 1
-final_result: >
-  Al finalizar la práctica, habrás desplegado exitosamente una aplicación **Node.js + Express + HTML** dentro de un contenedor Docker, comprendiendo la relación entre backend, frontend y la contenerización de aplicaciones.
+
+En esta práctica construiremos una aplicación **Agenda de contactos**, únicamente memoria. El backend estará hecho con **Node.js + Express**, mientras que el frontend será una página HTML con un formulario y una tabla para mostrar los contactos. Finalmente, aprenderemos a contenerizarla con Docker y ejecutarla de manera local.
+
+Al finalizar la práctica, habrás desplegado exitosamente una aplicación **Node.js + Express + HTML** dentro de un contenedor Docker, comprendiendo la relación entre backend, frontend y la contenerización de aplicaciones.
 notes:
   - Esta práctica no usa base de datos; los contactos se pierden al reiniciar el servidor.
   - El frontend se sirve desde el backend (mismo origen → sin CORS).
