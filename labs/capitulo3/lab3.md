@@ -1,10 +1,10 @@
 # Práctica 3. Construcción de una imagen Docker multietapa
 
-## 🎯 Objetivos:
+## Objetivos:
 Al finalizar la práctica, serás capaz de:
 - Construir imágenes Docker optimizadas utilizando la técnica de **multi-stage builds**, comparando el tamaño de la imagen con y sin multietapa. Usaremos como ejemplo una aplicación Node.js con Express que sirva un frontend estático y una API REST.
 
-## 🕒 Duración aproximada:
+## Duración aproximada:
 
 - 60 minutos.
 
