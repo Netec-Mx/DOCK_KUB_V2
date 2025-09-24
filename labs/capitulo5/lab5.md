@@ -1,12 +1,17 @@
----
-layout: lab
-title: "Práctica 5: Redes y comunicación entre contenedores"
-permalink: /capitulo5/lab5/
-images_base: /labs/capitulo5/img
-duration: "60 minutos"
-objective:
-  - Aprender a **diseñar y validar la comunicación entre contenedores** usando **redes personalizadas de Docker** (bridge). Construirás una app multi-servicio con **API Node.js (Express)**, **PostgreSQL** y **Nginx (reverse proxy)** en **dos redes**. `frontend-net` (expuesta) y `backend-net` (privada). Practicarás **DNS interno**, **aislamiento de redes**, **múltiples redes por contenedor**, variables de entorno y **comprobaciones de salud**.
-prerequisites:
+# Práctica 5. Redes y comunicación entre contenedores
+
+## Objetivos
+Al finalizar la práctica, serás capaz de:
+- Diseñar y validar la comunicación entre contenedores usando **redes personalizadas de Docker** (bridge).
+- Construir una app multiservicio con **API Node.js (Express)**, **PostgreSQL** y **Nginx (reverse proxy)** en **dos redes**. `frontend-net` (expuesta) y `backend-net` (privada).
+- Practicar **DNS interno**, **aislamiento de redes**, **múltiples redes por contenedor**, variables de entorno y **comprobaciones de salud**.
+
+## Duración aproximada
+- 60 minutos.
+
+## Objetivo visual
+
+**Prerrequisitos:**
   - Visual Studio Code
   - Docker Desktop en ejecución
   - Terminal Git Bash en VS Code
