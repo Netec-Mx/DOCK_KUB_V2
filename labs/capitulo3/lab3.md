@@ -44,7 +44,7 @@ Crear la estructura de carpetas con backend y frontend.
 
 **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
-  ![micint]({{ page.images_base | relative_url }}/9.png)
+  ![micint]({{ page.images_base | relative_url }}/1.png)
 
 **Paso 4.** Usa la terminal de **`Git Bash`**, da clic como lo muestra la imagen.
 
