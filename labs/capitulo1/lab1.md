@@ -10,39 +10,26 @@ Al finalizar la práctica, serás capaz de:
 
 ## Objetivo visual
 
-## Instrucciones
-**Prerrequisitos**
-  - Visual Studio Code instalado
-  - Extensión de **Docker** instalada en VS Code (opcional pero recomendable)
-  - Git Bash configurado como terminal por defecto en VS Code
-  - Docker Desktop instalado y en ejecución
-  - Node.js (versión LTS recomendada. 20.x o superior)
-  - Navegador web (Chrome, Edge o Firefox)
+## Tablas de ayuda
 
+| Software | Estado | 
+|-----:|-----------|
+|Visual Studio Code|Instalado | 
+| Extensión de **Docker** |  Instalada en VS Code (opcional pero recomendable) | 
+| Git Bashc | Configurado como terminal por defecto en VS Code| 
+| Docker Desktop | Instalado y en ejecución | https://docs.docker.com/
+| Node.js | Versión LTS recomendada: 20.x o superior | 
+| Navegador web (Chrome, Edge o Firefox) | Instalado |  
+
+**Notas**
+- Esta práctica no usa base de datos; los contactos se pierden al reiniciar el servidor.
+- El frontend se sirve desde el backend (mismo origen → sin CORS).
+- Puedes extender la práctica para persistir datos en archivos o una base de datos.
+    
+## Instrucciones
 En esta práctica construiremos una aplicación **Agenda de contactos**, únicamente memoria. El backend estará hecho con **Node.js + Express**, mientras que el frontend será una página HTML con un formulario y una tabla para mostrar los contactos. Finalmente, aprenderemos a contenerizarla con Docker y ejecutarla de manera local.
 
-Al finalizar la práctica, habrás desplegado exitosamente una aplicación **Node.js + Express + HTML** dentro de un contenedor Docker, comprendiendo la relación entre backend, frontend y la contenerización de aplicaciones.
-notes:
-  - Esta práctica no usa base de datos; los contactos se pierden al reiniciar el servidor.
-  - El frontend se sirve desde el backend (mismo origen → sin CORS).
-  - Puedes extender la práctica para persistir datos en archivos o una base de datos.
-references:
-  - text: Documentación oficial Docker
-    url: https://docs.docker.com/
-  - text: Express.js - Getting Started
-    url: https://expressjs.com/es/starter/installing.html
-  - text: Node.js
-    url: https://nodejs.org/es
-  - text: Guía de imágenes oficiales Node.js en Docker Hub
-    url: https://hub.docker.com/_/node
-prev: /capitulo12/lab12          
-next: /capitulo2/lab2/
----
-
-
----
-
-### Tarea 1: Preparar el entorno de trabajo
+### Tarea 1. Preparar el entorno de trabajo
 
 Configurar la estructura de carpetas y archivos del proyecto para mantener una buena organización desde el inicio.
 
