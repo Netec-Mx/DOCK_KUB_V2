@@ -40,10 +40,12 @@ Configura la estructura de carpetas y archivos del proyecto para mantener una bu
 **Paso 2.** Abre **Visual Studio Code (VS Code)**. Puedes hacerlo desde el **Escritorio** o buscándolo en las aplicaciones de Windows.
 
 **Paso 3.** En **VS Code**, abre la **Terminal** (icono en la parte superior derecha o con el menú **View → Terminal**).  
-  ![micint]({{ page.images_base | relative_url }}/1.png)
+
+({{ page.images_base | relative_url }}/1.png)
 
 **Paso 4.** Selecciona la terminal **Git Bash** como shell activo.  
-  ![micint]({{ page.images_base | relative_url }}/2.png)
+
+![micint] ({{ page.images_base | relative_url }}/2.png)
 
 **Paso 5.** Verifica que **Docker** esté instalado.
   
