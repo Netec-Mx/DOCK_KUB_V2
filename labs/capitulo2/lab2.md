@@ -1,15 +1,11 @@
-# Práctica 2. Operaciones esenciales con contenedores Docker
-
-## Objetivos:
-Al finalizar la práctica, serás capaz de:
-- Administrar contenedores en Docker, dominando operaciones básicas como creación, ejecución, inspección, gestión y eliminación desde la terminal Git Bash en Visual Studio Code.
-
-## 🕒 Duración aproximada:
-- 60 minutos.
-
-## 🔍 Objetivo visual:
-
-
+---
+layout: lab
+title: "Práctica 2: Operaciones esenciales con contenedores Docker"
+permalink: /capitulo2/lab2/
+images_base: /labs/capitulo2/img
+duration: "60 minutos"
+objective:
+  - El participante aprenderá a administrar contenedores en Docker, dominando operaciones básicas como creación, ejecución, inspección, gestión y eliminación desde la terminal Git Bash en Visual Studio Code.
 prerequisites:
   - Visual Studio Code instalado
   - Docker Desktop instalado y en ejecución
@@ -37,7 +33,12 @@ references:
     url: https://github.com/docker/labs
   - text: Play with Docker
     url: https://labs.play-with-docker.com/
+prev: /capitulo1/lab1          
+next: /capitulo3/lab3/
+---
 
+
+---
 
 ### Tarea 1: Preparar la carpeta de la práctica
 

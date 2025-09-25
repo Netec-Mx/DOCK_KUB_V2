@@ -1,16 +1,11 @@
-# Práctica 12. Despliegue de aplicación con ingress en Kubernetes
-
-## Objetivos
-Al finalizar la práctica, serás capaz de:
-- Desplegar **dos servicios HTTP (app1 y app2)** detrás de un **único recurso Ingress** usando **NGINX Ingress Controller** en **Minikube**, enrutando por **rutas** (`/app1` y `/app2`).
-- Construir imágenes Docker locales, crear Deployments y Services **ClusterIP**, habilitar el **addon de Ingress** de Minikube, definir un **Ingress** con *path-based routing* y validar el acceso vía navegador.
-
-## Duración aproximada
-- 60 minutos.
-
-## Objetivo visual
-
-
+---
+layout: lab
+title: " Práctica 12: Despliegue de aplicación con Ingress en Kubernetes"
+permalink: /capitulo12/lab12/
+images_base: /labs/capitulo12/img
+duration: "60 minutos"
+objective:
+  - Desplegar **dos servicios HTTP (app1 y app2)** detrás de un **único recurso Ingress** usando **NGINX Ingress Controller** en **Minikube**, enrutando por **rutas** (`/app1` y `/app2`). Construirás imágenes Docker locales, crearás Deployments y Services **ClusterIP**, habilitarás el **addon de Ingress** de Minikube, definirás un **Ingress** con *path-based routing* y validarás el acceso vía
 prerequisites:
   - Visual Studio Code
   - Docker Desktop en ejecución

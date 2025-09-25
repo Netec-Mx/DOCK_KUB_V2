@@ -1,19 +1,12 @@
-# Práctica 4. Persistencia de datos con volúmenes y bind mounts
-
-## Objetivos
-Al finalizar la práctica, serás capaz de:
-- Persistir datos en contenedores Docker usando volúmenes (named volumes) y bind mounts.
-- Extender la Agenda de contactos con interfaz para almacenar la información en SQLite, validando que los datos sobreviven a reinicios y recreaciones de contenedores y habilitando un flujo de desarrollo con bind mounts desde Visual Studio Code y Git Bash.
-
-## Duración aproximada
-
-- 60 minutos.
-
-## 🔍 Objetivo visual
-
-## Instrucciones
-
-**Prerrequisitos**
+---
+layout: lab
+title: "Práctica 4: Persistencia de datos con volúmenes y bind mounts"
+permalink: /capitulo4/lab4/
+images_base: /labs/capitulo4/img
+duration: "60 minutos"
+objective:
+  - Aprender a **persistir datos** en contenedores Docker usando **volúmenes** (named volumes) y **bind mounts**. Extenderás la **Agenda de contactos con interfaz** para almacenar la información en **SQLite**, validando que los datos sobreviven a reinicios y recreaciones de contenedores, y habilitando un flujo de desarrollo con **bind mounts** desde Visual Studio Code y Git Bash.
+prerequisites:
   - Visual Studio Code instalado
   - Docker Desktop instalado y en ejecución
   - Git Bash configurado como terminal por defecto en VS Code
@@ -47,30 +40,34 @@ next: /capitulo5/lab5/
 ---
 
 
-### Tarea 1. Preparar la estructura del proyecto
+---
+
+### Tarea 1: Preparar la estructura del proyecto
 
 Crear la carpeta base y la estructura mínima del proyecto para mapear correctamente datos y código durante los montajes.
 
-**Paso 1.** Inicia sesión en tu máquina de trabajo como usuario con permisos administrativos.  
+#### Tarea 1.1
 
-**Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
+- **Paso 1.** Inicia sesión en tu máquina de trabajo como usuario con permisos administrativos.  
 
-**Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
+
+- **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/20.png)
 
-**Paso 4.** Usa la terminal de **`Git Bash`**, da clic como lo muestra la imagen.
+- **Paso 4.** Usa la terminal de **`Git Bash`**, da clic como lo muestra la imagen.
 
   ![micint]({{ page.images_base | relative_url }}/21.png)
 
-**Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
+- **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
 
   > **NOTA:** Si te quedaste en el directorio de una práctica usa `cd ..` para retornar a la raíz de laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
 
-**Paso 6.** Ahora crea el directorio para trabajar en la practica 4:
+- **Paso 6.** Ahora crea el directorio para trabajar en la practica 4:
 
   > **NOTA:** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
   {: .lab-note .info .compact}
@@ -79,14 +76,14 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   mkdir lab4-dockervolumes && cd lab4-dockervolumes
   ```
 
-**Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
 
   > **NOTA:** Trabajar en VS Code permite editar y versionar cómodamente. Git Bash brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
-**Paso 8.** Crearas la siguiente estructura inicial del proyecto de la aplicación:
+- **Paso 8.** Crearas la siguiente estructura inicial del proyecto de la aplicación:
 
   > **NOTA:**
   - La carpeta `data/` será el destino de la base **SQLite** en el host; `frontend/` se servirá como contenido estático desde el backend.
@@ -105,7 +102,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   └── Dockerfile
   ```
 
-**Paso 9.** Ahora crea la carpeta **backend/** y sus archivos vacios.
+- **Paso 9.** Ahora crea la carpeta **backend/** y sus archivos vacios.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab4-dockervolumes**
   {: .lab-note .info .compact}
@@ -114,7 +111,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   mkdir -p backend && touch backend/package.json backend/server.js
   ```
 
-**Paso 10.** Muy bien continua con la creación del directorio **frontend/** y el archivo index vacio.
+- **Paso 10.** Muy bien continua con la creación del directorio **frontend/** y el archivo index vacio.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab4-dockervolumes**
   {: .lab-note .info .compact}
@@ -123,7 +120,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   mkdir -p frontend && touch frontend/index.html
   ```
 
-**Paso 11.** Crea el ultimo directorio y archivos del proyecto **data/**, **.dockerignore** y **Dockerfile**
+- **Paso 11.** Crea el ultimo directorio y archivos del proyecto **data/**, **.dockerignore** y **Dockerfile**
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab4-dockervolumes**
   {: .lab-note .info .compact}
@@ -132,7 +129,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   mkdir -p data && touch .dockerignore Dockerfile
   ```
 
-**Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
+- **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
 
   > **IMPORTANTE:** Evita copiar artefactos innecesarios y la carpeta `data` hacia la imagen, manteniéndola ligera.
   {: .lab-note .important .compact}
@@ -152,7 +149,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   .DS_Store
   ```
 
-**Paso 13.** Valida la creacion de tu estructura de proyecto, escribe el siguiente comando.
+- **Paso 13.** Valida la creacion de tu estructura de proyecto, escribe el siguiente comando.
 
   > **NOTA:** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VSCode.
   {: .lab-note .info .compact}
@@ -172,11 +169,13 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
 
 ---
 
-### Tarea 2. Backend Node.js con SQLite y endpoint de salud
+### Tarea 2: Backend Node.js con SQLite y endpoint de salud
 
 Implementar API REST con SQLite, inicialización de esquema y endpoint `/health` para diagnóstico.
 
-**Paso 14.** Abre el archivo `backend/package.json` y agrega el siguiente contenido:
+#### Tarea 2.1
+
+- **Paso 14.** Abre el archivo `backend/package.json` y agrega el siguiente contenido:
 
   > **NOTA:** Declaramos dependencias mínimas y el script `start` para facilitar ejecuciones locales y en contenedor.
   {: .lab-note .info .compact}
@@ -196,7 +195,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
   }
   ```
 
-**Paso 15.** Abre el archivo `backend/server.js` y agrega el siguiente contenido:
+- **Paso 15.** Abre el archivo `backend/server.js` y agrega el siguiente contenido:
 
   > **NOTA:** `DB_DIR` configurable via env (`/app/data` en contenedor) permite montar un volumen para persistencia.
   - **Express + SQLite3** para gestionar contactos con persistencia.  
@@ -284,7 +283,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
   });
   ```
 
-**Paso 16.** Valida localmente la aplicación:
+- **Paso 16.** Valida localmente la aplicación:
 
   > **NOTA:**
     - Probar localmente reduce el ciclo de depuración antes de contenerizar.
@@ -297,7 +296,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
 
   ![micint]({{ page.images_base | relative_url }}/4.png)
 
-**Paso 17.** Abre otra terminal **GitBash** dentro de VSCode y ejecuta los siguientes comandos para la prueba local:
+- **Paso 17.** Abre otra terminal **GitBash** dentro de VSCode y ejecuta los siguientes comandos para la prueba local:
 
   > **NOTA:**
     - `curl /health` debe responder `{"status":"ok","db":"up",...}`
@@ -314,7 +313,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-**Paso 18.** Regresa a la terminal donde esta ocupando el proceso **node server.js** y detenlo con `CTRL + c`
+- **Paso 18.** Regresa a la terminal donde esta ocupando el proceso **node server.js** y detenlo con `CTRL + c`
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[1] }}{% endcapture %}
@@ -322,11 +321,13 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
 
 ---
 
-### Tarea 3. Frontend con operaciones CRUD básicas
+### Tarea 3: Frontend con operaciones CRUD básicas
 
 Implementar una interfaz simple con **alta** y **eliminación** de contactos, consumiendo la API.
 
-**Paso 19.** Abre el archivo `frontend/index.html` y agrega el siguiente contenido:
+#### Tarea 3.1
+
+- **Paso 19.** Abre el archivo `frontend/index.html` y agrega el siguiente contenido:
 
   > **NOTA:** UI minimalista que llama a la API del backend servido en el mismo host/puerto.
   - **UI mínima** con estilos inline y layout centrado.
@@ -411,37 +412,40 @@ Implementar una interfaz simple con **alta** y **eliminación** de contactos, co
   </html>
   ```
 
-**Paso 20.** En la terminal dentro del directorio **backend** escribe el siguiente comando para inicializar la app localmente.
+- **Paso 20.** En la terminal dentro del directorio **backend** escribe el siguiente comando para inicializar la app localmente.
 
   ```bash
   node server.js
   ```
 
-**Paso 21.** Abre el navegador **Google Chrome** y en la barra de direcciones escribe:
+- **Paso 21.** Abre el navegador **Google Chrome** y en la barra de direcciones escribe:
 
   ```bash
   http://localhost:3000
   ```
 
-**Paso 22.** Debera abrir la pagina web donde podras **registrar** y **eliminar contactos**.
+- **Paso 22.** Debera abrir la pagina web donde podras **registrar** y **eliminar contactos**.
 
   > **NOTA:** Prueba registrar cualquier contacto que gustes.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/6.png) 
 
-**Paso 23.** Cuando hayas terminado de interactuar con la aplicación, rompe el proceso del **server local**, escribe `CTRL + c`
+- **Paso 23.** Cuando hayas terminado de interactuar con la aplicación, rompe el proceso del **server local**, escribe `CTRL + c`
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[2] }}{% endcapture %}
 {% include task-result.html title="Tarea finalizada" content=r1 %}
 
+---
 
-### Tarea 4. Dockerfile con HEALTHCHECK
+### Tarea 4: Dockerfile con HEALTHCHECK
 
 Construir la imagen, exponiendo puertos y agregando **HEALTHCHECK** para diagnósticos.
 
-**Paso 24.** Abre el archivo `Dockerfile` y agrega el contenido para compilar la imagen docker:
+#### Tarea 4.1
+
+- **Paso 24.** Abre el archivo `Dockerfile` y agrega el contenido para compilar la imagen docker:
 
   > **NOTA:** `HEALTHCHECK` reporta estado `healthy/unhealthy` útil para automatización y orquestadores.
   {: .lab-note .info .compact}
@@ -481,7 +485,7 @@ Construir la imagen, exponiendo puertos y agregando **HEALTHCHECK** para diagnó
 
   ```
 
-**Paso 25.** Construye la imagen, escribe el siguiente comando en la terminal:
+- **Paso 25.** Construye la imagen, escribe el siguiente comando en la terminal:
 
   > **IMPORTANTE:**
   - El comando se ejecuta desde la carpeta **backend**, para regresar un nivel al directorio **raíz**
@@ -496,7 +500,7 @@ Construir la imagen, exponiendo puertos y agregando **HEALTHCHECK** para diagnó
 
   ![micint]({{ page.images_base | relative_url }}/7.png) 
 
-**Paso 26.** Verificar que la imagen se haya creado correctamente, escribe el siguiente comando:
+- **Paso 26.** Verificar que la imagen se haya creado correctamente, escribe el siguiente comando:
 
   > **NOTA:** La imagen `agenda-persistente` debe aparecer listada con su SIZE.
   {: .lab-note .info .compact}
@@ -513,11 +517,13 @@ Construir la imagen, exponiendo puertos y agregando **HEALTHCHECK** para diagnó
 
 ---
 
-### Tarea 5. Persistencia con **named volume**
+### Tarea 5: Persistencia con **named volume**
 
 Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/app/data` para que la BD persista.
 
-**Paso 27.** Crea el siguiente volumen de datos persistente, escribe los siguientes comandos:
+#### Tarea 5.1
+
+- **Paso 27.** Crea el siguiente volumen de datos persistente, escribe los siguientes comandos:
 
   > **NOTA:** Los **named volumes** son gestionados por Docker y no dependen de rutas del host.
   {: .lab-note .info .compact}
@@ -532,7 +538,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/9.png) 
 
-**Paso 28.** Ejecuta el contenedor usando el volumen que se acaba de crear:
+- **Paso 28.** Ejecuta el contenedor usando el volumen que se acaba de crear:
 
   > **NOTA:** Montas el volumen en la ruta que el backend espera para guardar la BD.
   {: .lab-note .info .compact}
@@ -548,7 +554,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
     agenda-persistente
   ```
 
-**Paso 29.** Verifica que el contenedor este corriendo correctamente, escribe el siguiente comando.
+- **Paso 29.** Verifica que el contenedor este corriendo correctamente, escribe el siguiente comando.
 
   ```bash
   docker ps
@@ -557,7 +563,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
   ![micint]({{ page.images_base | relative_url }}/10.png) 
 
 
-**Paso 30.** Verifica los logs del contenedor, escribe el siguiente comando.
+- **Paso 30.** Verifica los logs del contenedor, escribe el siguiente comando.
 
   ```bash
   docker logs -f agenda
@@ -565,9 +571,9 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/11.png)
 
-**Paso 31.** Rompe el proceso de los logs con `CTRL + c`.
+- **Paso 31.** Rompe el proceso de los logs con `CTRL + c`.
 
-**Paso 32.** Verifica la salud de la aplicación agenda, escribe el siguiente comando.
+- **Paso 32.** Verifica la salud de la aplicación agenda, escribe el siguiente comando.
 
   > **NOTA:** Verificas la conectividad de la app/BD
   {: .lab-note .info .compact}
@@ -578,7 +584,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/12.png)
 
-**Paso 33.** Valida que el endpoint de la api de contactos funcione correctamente, escribe el siguiente comando:
+- **Paso 33.** Valida que el endpoint de la api de contactos funcione correctamente, escribe el siguiente comando:
 
   > **NOTA:** Respuesta inicial (lista vacía).
   {: .lab-note .info .compact}
@@ -589,7 +595,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-**Paso 34.** Abre la URL del la aplicación e inserta contactos desde la interfaz grafica en el navegador **Google Chrome**.
+- **Paso 34.** Abre la URL del la aplicación e inserta contactos desde la interfaz grafica en el navegador **Google Chrome**.
 
   ```bash
   http://localhost:3000
@@ -597,7 +603,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/14.png)
 
-**Paso 35.** Regresa a la terminal de VSCode. Prueba registra un contacto desde la CLI, escribe el siguiente comando.
+- **Paso 35.** Regresa a la terminal de VSCode. Prueba registra un contacto desde la CLI, escribe el siguiente comando.
 
   > **NOTA:** Si es necesario registra mas contactos para que tanga mas información
   {: .lab-note .info .compact}
@@ -610,7 +616,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-**Paso 36.** Elimina el contenedor activo y recrealo de nuevo, ejecuta los siguientes comandos:
+- **Paso 36.** Elimina el contenedor activo y recrealo de nuevo, ejecuta los siguientes comandos:
 
   > **NOTA:** Los datos siguen en el volumen aunque el contenedor fue recreado.
   {: .lab-note .info .compact}
@@ -630,7 +636,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
     agenda-persistente
   ```
 
-**Paso 37.** Puedes verificar con las siguientes opciones:
+- **Paso 37.** Puedes verificar con las siguientes opciones:
 
   - **Opción 1 CLI**
   
@@ -654,17 +660,19 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
 ---
 
-### Tarea 6. Flujo de desarrollo con **bind mounts**
+### Tarea 6: Flujo de desarrollo con **bind mounts**
 
 Montar carpetas del host (código y datos) para ver cambios sin reconstruir la imagen. Ideal para desarrollo en VS Code.
 
-**Paso 38.** Primero eliminamos el contenedor actual :
+#### Tarea 6.1
+
+- **Paso 38.** Primero eliminamos el contenedor actual :
 
   ```bash
   docker rm -f agenda 2>/dev/null || true
   ```
 
-**Paso 39.** Ejecuta con **bind mounts** en la terminal de **GitBash** la montura de los directorios:
+- **Paso 39.** Ejecuta con **bind mounts** en la terminal de **GitBash** la montura de los directorios:
 
   > **NOTA:** `$(pwd)` monta directorios del proyecto dentro del contenedor para edición en caliente.
   {: .lab-note .info .compact}
@@ -679,14 +687,14 @@ Montar carpetas del host (código y datos) para ver cambios sin reconstruir la i
     agenda-persistente
   ```
 
-**Paso 40.** Edita el archivo `frontend/index.html`, cambia el valor de la etiqueta `<h1>`.
+- **Paso 40.** Edita el archivo `frontend/index.html`, cambia el valor de la etiqueta `<h1>`.
 
   > **IMPORTANTE:** Puedes agregar un nombre al final o cambiar el titulo completamente.
   {: .lab-note .important .compact}
 
   ![micint]({{ page.images_base | relative_url }}/18.png)
 
-**Paso 41.** Abre la pagina en **Google Chrome** ver el cambio reflejado.
+- **Paso 41.** Abre la pagina en **Google Chrome** ver el cambio reflejado.
 
   > **NOTA:** El frontend se sirve estático, al actualizar verás los cambios sin rebuild.
   {: .lab-note .info .compact}
@@ -701,12 +709,15 @@ Montar carpetas del host (código y datos) para ver cambios sin reconstruir la i
 {% capture r1 %}{{ results[5] }}{% endcapture %}
 {% include task-result.html title="Tarea finalizada" content=r1 %}
 
+---
 
-### Tarea 7. Limpieza y buenas prácticas
+### Tarea 7: Limpieza y buenas prácticas
 
 Detener y eliminar recursos creados; entender implicaciones de limpieza en volúmenes.
 
-**Paso 42.** Detener y eliminar contenedores de práctica:
+#### Tarea 7.1
+
+- **Paso 42.** Detener y eliminar contenedores de práctica:
 
   > **NOTA:** Libera puertos/recursos; los datos persisten si usaste volumen o bind mount.
   {: .lab-note .info .compact}
@@ -715,7 +726,7 @@ Detener y eliminar recursos creados; entender implicaciones de limpieza en volú
   docker rm -f agenda 2>/dev/null || true
   ```
 
-**Paso 43.** Eliminar el volumen creado:
+- **Paso 43.** Eliminar el volumen creado:
 
   ```bash
   docker volume rm agenda_data

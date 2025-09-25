@@ -1,16 +1,12 @@
-# Práctica 6. Orquestación de servicios con Docker Compose
-
-## Objetivos
-Al finalizar la práctica, serás capaz de:
-- Orquestar múltiples servicios con **Docker Compose**, definiendo redes, volúmenes, dependencias y health checks en un único archivo declarativo para levantar, validar, escalar y apagar un stack completo (Nginx + API Node.js + PostgreSQL) con un solo comando.
-
-## Duración aproximada
-- 60 minutos.
-
-## Objetivo visual
-
-## Instrucciones
-**Prerrequisitos**
+---
+layout: lab
+title: "Práctica 6: Orquestación de servicios con Docker Compose"
+permalink: /capitulo6/lab6/
+images_base: /labs/capitulo6/img
+duration: "60 minutos"
+objective:
+  - Aprender a **orquestar múltiples servicios** con **Docker Compose**, definiendo redes, volúmenes, dependencias y health checks en un único archivo declarativo para levantar, validar, escalar y apagar un stack completo (Nginx + API Node.js + PostgreSQL) con un solo comando.
+prerequisites:
   - Visual Studio Code
   - Docker Desktop en ejecución (incluye Docker Compose v2)
   - Terminal Git Bash en VS Code

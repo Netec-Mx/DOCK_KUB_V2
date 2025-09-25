@@ -1,53 +1,61 @@
-# Práctica 1. Despliegue de una aplicación Node.js simple con Docker
+---
+layout: lab
+title: "Práctica 1: Despliegue de una aplicación Node.js simple con Docker"
+permalink: /capitulo1/lab1/
+images_base: /labs/capitulo1/img
+duration: "60 minutos"
+objective:
+  - El objetivo de esta práctica es que el participante aprenda a crear, ejecutar y contenerizar una aplicación simple en **Node.js con Express** que actúe como una agenda de contactos, junto con un frontend HTML básico. Al finalizar, el estudiante comprenderá cómo usar Docker para construir imágenes, ejecutar contenedores y validar la aplicación de forma local.
+prerequisites:
+  - Visual Studio Code instalado
+  - Extensión de **Docker** instalada en VS Code (opcional pero recomendable)
+  - Git Bash configurado como terminal por defecto en VS Code
+  - Docker Desktop instalado y en ejecución
+  - Node.js (versión LTS recomendada. 20.x o superior)
+  - Navegador web (Chrome, Edge o Firefox)
+introduction:
+  - En esta práctica construiremos una aplicación **Agenda de contactos**, únicamente memoria. El backend estará hecho con **Node.js + Express**, mientras que el frontend será una página HTML con un formulario y una tabla para mostrar los contactos. Finalmente, aprenderemos a contenerizarla con Docker y ejecutarla de manera local.
+slug: lab1
+lab_number: 1
+final_result: >
+  Al finalizar la práctica, habrás desplegado exitosamente una aplicación **Node.js + Express + HTML** dentro de un contenedor Docker, comprendiendo la relación entre backend, frontend y la contenerización de aplicaciones.
+notes:
+  - Esta práctica no usa base de datos; los contactos se pierden al reiniciar el servidor.
+  - El frontend se sirve desde el backend (mismo origen → sin CORS).
+  - Puedes extender la práctica para persistir datos en archivos o una base de datos.
+references:
+  - text: Documentación oficial Docker
+    url: https://docs.docker.com/
+  - text: Express.js - Getting Started
+    url: https://expressjs.com/es/starter/installing.html
+  - text: Node.js
+    url: https://nodejs.org/es
+  - text: Guía de imágenes oficiales Node.js en Docker Hub
+    url: https://hub.docker.com/_/node
+prev: /capitulo12/lab12          
+next: /capitulo2/lab2/
+---
 
-##  Objetivo
-Al finalizar la práctica, serás capaz de:
-- Crear, ejecutar y contenerizar una aplicación simple en Node.js con Express que actúe como una agenda de contactos, junto con un frontend HTML básico. 
-- Comprender cómo usar Docker para construir imágenes, ejecutar contenedores y validar la aplicación de forma local.
 
-## Duración aproximada
-- 60 minutos.
+---
 
-## Objetivo visual
+### Tarea 1: Preparar el entorno de trabajo
 
-## Tablas de ayuda
-
-| Software | Estado | 
-|-----:|-----------|
-|Visual Studio Code|Instalado | 
-| Extensión de **Docker** |  Instalada en VS Code (opcional pero recomendable) | 
-| Git Bashc | Configurado como terminal por defecto en VS Code| 
-| Docker Desktop | Instalado y en ejecución | https://docs.docker.com/
-| Node.js | Versión LTS recomendada: 20.x o superior | 
-| Navegador web (Chrome, Edge o Firefox) | Instalado |  
-
-**Notas**
-- Esta práctica no usa base de datos; los contactos se pierden al reiniciar el servidor.
-- El frontend se sirve desde el backend (mismo origen → sin CORS).
-- Puedes extender la práctica para persistir datos en archivos o una base de datos.
-    
-## Instrucciones
-En esta práctica construiremos una aplicación **Agenda de contactos**, únicamente memoria. El backend estará hecho con **Node.js + Express**, mientras que el frontend será una página HTML con un formulario y una tabla para mostrar los contactos. Finalmente, aprenderemos a contenerizarla con Docker y ejecutarla de manera local.
-
-### Tarea 1. Preparar el entorno de trabajo
-
-Configura la estructura de carpetas y archivos del proyecto para mantener una buena organización desde el inicio.
+Configurar la estructura de carpetas y archivos del proyecto para mantener una buena organización desde el inicio.
 
 #### Tarea 1.1
 
-**Paso 1.** Inicia sesión en tu equipo con un usuario que tenga permisos administrativos.  
+- **Paso 1.** Inicia sesión en tu equipo con un usuario que tenga permisos administrativos.  
 
-**Paso 2.** Abre **Visual Studio Code (VS Code)**. Puedes hacerlo desde el **Escritorio** o buscándolo en las aplicaciones de Windows.
+- **Paso 2.** Abre **Visual Studio Code (VS Code)**. Puedes hacerlo desde el **Escritorio** o buscándolo en las aplicaciones de Windows.
 
-**Paso 3.** En **VS Code**, abre la **Terminal** (icono en la parte superior derecha o con el menú **View → Terminal**).  
+- **Paso 3.** En **VS Code**, abre la **Terminal** (icono en la parte superior derecha o con el menú **View → Terminal**).  
+  ![micint]({{ page.images_base | relative_url }}/1.png)
 
-({{ page.images_base | relative_url }}/1.png)
+- **Paso 4.** Selecciona la terminal **Git Bash** como shell activo.  
+  ![micint]({{ page.images_base | relative_url }}/2.png)
 
-**Paso 4.** Selecciona la terminal **Git Bash** como shell activo.  
-
-![micint] ({{ page.images_base | relative_url }}/2.png)
-
-**Paso 5.** Verifica que **Docker** esté instalado.
+- **Paso 5.** Verifica que **Docker** esté instalado.
   
   > **NOTA:** Copia y pega el siguiente comando en la terminal. **La versión puede variar.**
   {: .lab-note .info .compact}
@@ -57,7 +65,7 @@ Configura la estructura de carpetas y archivos del proyecto para mantener una bu
   ```
   ![micint]({{ page.images_base | relative_url }}/3.png)
 
-**Paso 6.** Verifica **Node.js** y **npm**:
+- **Paso 6.** Verifica **Node.js** y **npm**:
 
   ```bash
   node -v
@@ -69,7 +77,7 @@ Configura la estructura de carpetas y archivos del proyecto para mantener una bu
   ```
   ![micint]({{ page.images_base | relative_url }}/6.png)
 
-**Paso 7.** Crea la estructura base del directorio del curso en el **Escritorio** del equipo asignado:
+- **Paso 7.** Crea la estructura base del directorio del curso en el **Escritorio** del equipo asignado:
 
   > **IMPORTANTE:** Si es necesario, ajusta manualmente las rutas en la terminal para crear la estructura de directorios.
   {: .lab-note .important .compact}
@@ -87,7 +95,7 @@ Configura la estructura de carpetas y archivos del proyecto para mantener una bu
   mkdir frontend backend
   ```
 
-**Paso 8.** Verifica la estructura con el siguiente comando:
+- **Paso 8.** Verifica la estructura con el siguiente comando:
 
   ```bash
   ls -la -R
@@ -96,33 +104,37 @@ Configura la estructura de carpetas y archivos del proyecto para mantener una bu
 
 #### Tarea 1.2
 
-**Paso 9.** Abre el directorio del proyecto en **VS Code**.
+- **Paso 9.** Abre el directorio del proyecto en **VS Code**.
 
   > **NOTA:** Da clic en el icono como se muestra en la imagen.
   {: .lab-note .info .compact}
   ![micint]({{ page.images_base | relative_url }}/8.png)
 
-**Paso 10.** Clic en **Open Folder**.  
+- **Paso 10.** Clic en **Open Folder**.  
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
-**Paso 11.** Navega al directorio **dockerlabs** (en el Escritorio) y da clic en **Select Folder**.
+- **Paso 11.** Navega al directorio **dockerlabs** (en el Escritorio) y da clic en **Select Folder**.
 
   > **NOTA:** Si aparece la ventana emergente, selecciona **Yes, I trust the authors**.
   {: .lab-note .info .compact}
   ![micint]({{ page.images_base | relative_url }}/10.png)
 
-**Paso 12.** Verás cargado tu directorio para comenzar a trabajar.  
+- **Paso 12.** Verás cargado tu directorio para comenzar a trabajar.  
   ![micint]({{ page.images_base | relative_url }}/11.png)
 
 {% assign results = site.data["task-results"][page.slug].results %}
 {% capture r1 %}{{ results[0] }}{% endcapture %}
 {% include task-result.html title="Tarea finalizada" content=r1 %}
 
-### Tarea 2. Crear el backend en Node.js
+---
 
-Implementa un servidor **Express** que maneje rutas para agregar, listar, actualizar y borrar contactos **y que sirva el frontend**.
+### Tarea 2: Crear el backend en Node.js
 
-**Paso 1.** Asegúrate de estar dentro de la carpeta **backend**.
+Implementar un servidor **Express** que maneje rutas para agregar, listar, actualizar y borrar contactos, **y que sirva el frontend**.
+
+#### Tarea 2.1
+
+- **Paso 13.** Asegúrate de estar dentro de la carpeta **backend**.
 
   > **NOTA:** Abre la **Terminal** desde la esquina superior derecha y navega al directorio desde la terminal.
   {: .lab-note .info .compact}
@@ -132,7 +144,7 @@ Implementa un servidor **Express** que maneje rutas para agregar, listar, actual
   ```
   ![micint]({{ page.images_base | relative_url }}/12.png)
 
-**Paso 2.** Inicializa un proyecto de **Node.js** en la carpeta `backend` e instala **Express**:
+- **Paso 14.** Inicializa un proyecto de **Node.js** en la carpeta `backend` e instala **Express**:
 
   > **NOTA:** Verifica que el directorio actual sea **backend**.
   {: .lab-note .info .compact} 
@@ -143,14 +155,14 @@ Implementa un servidor **Express** que maneje rutas para agregar, listar, actual
   ```
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-**Paso 3.** Crea el archivo `server.js` dentro de **backend**:
+- **Paso 15.** Crea el archivo `server.js` dentro de **backend**:
 
   ```bash
   touch server.js
   code server.js
   ```
 
-**Paso 4.** Agrega el siguiente contenido al archivo **`server.js`**.
+- **Paso 16.** Agrega el siguiente contenido al archivo **`server.js`**.
 
   > **NOTA:** Puedes copiar y pegar. **Express** permite crear APIs REST de forma rápida y sencilla, ideal para microservicios ligeros.
   {: .lab-note .info .compact}
@@ -227,7 +239,7 @@ Implementa un servidor **Express** que maneje rutas para agregar, listar, actual
   });
   ```
 
-**Paso 5.** Valida la ejecución del servidor. Ejecuta el siguiente comando en la terminal dentro del directorio **backend**
+- **Paso 17.** Valida la ejecución del servidor. Ejecuta el siguiente comando en la terminal dentro del directorio **backend**
 
   > **NOTA:** **Acepta** los permisos si aparece una ventana emergente.
   {: .lab-note .info .compact}
@@ -236,10 +248,10 @@ Implementa un servidor **Express** que maneje rutas para agregar, listar, actual
   node server.js
   ```
 
-**Paso 6.** El resultado esperado es ver el mensaje: `Servidor escuchando en http://localhost:3000`.
+- **Paso 18.** El resultado esperado es ver el mensaje: `Servidor escuchando en http://localhost:3000`.
   ![micint]({{ page.images_base | relative_url }}/14.png)
 
-**Paso 7.** Abre otra terminal en **VS Code** e inserta un contacto de prueba:
+- **Paso 19.** Abre otra terminal en **VS Code** e inserta un contacto de prueba:
 
   ```bash
   curl -X POST http://localhost:3000/contactos \
@@ -248,17 +260,17 @@ Implementa un servidor **Express** que maneje rutas para agregar, listar, actual
   ```
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-**Paso 8.** Abre el siguiente endpoint en una pestaña del navegador (Google Chrome):
+- **Paso 20.** Abre el siguiente endpoint en una pestaña del navegador (Google Chrome):
 
   ```
   http://localhost:3000/contactos
   ```
 
-**Paso 9.** Como resultado deberas ver un JSON con el contacto registrado.
+- **Paso 21.** Como resultado deberas ver un JSON con el contacto registrado.
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-**Paso 10.** Regresa a la terminal donde se ejecutó **node server.js** y detén el proceso con `CTRL + C`.
+- **Paso 22.** Regresa a la terminal donde se ejecutó **node server.js** y detén el proceso con `CTRL + C`.
 
 {% assign results = site.data["task-results"][page.slug].results %}
 {% capture r1 %}{{ results[1] }}{% endcapture %}
