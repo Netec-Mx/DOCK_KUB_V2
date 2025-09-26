@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: "Práctica 11: Exponer una aplicación con ClusterIP y DNS interno"
+title: "Práctica 11. Exponer una aplicación con ClusterIP y DNS interno"
 permalink: /capitulo11/lab11/
 images_base: /labs/capitulo11/img
 duration: "60 minutos"
@@ -55,14 +55,14 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
 
-  > **NOTA:** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
+  > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
 
 - **Paso 6.** Crea el directorio para trabajar en la **práctica**.
 
-  > **NOTA:** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
+  > **Nota.** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
   {: .lab-note .info .compact}
 
   ```bash
@@ -71,7 +71,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
 
-  > **NOTA:** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
+  > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
@@ -92,7 +92,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 9.** Ahora crea la carpeta **app/** y sus archivos vacios.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
 
   ```bash
@@ -101,7 +101,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 10.** Muy bien continua la creación del directorio **k8s/** con los manifiestos vacios.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
 
   ```bash
@@ -110,7 +110,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 11.** Crea los ultimos dos archivos del proyecto **.dockerignore** y **Dockerfile**.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
 
   ```bash
@@ -119,7 +119,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
 
-  > **NOTA:** Reduce el **contexto de build** y acelera las compilaciones evitando subir archivos innecesarios al daemon de Docker.
+  > **Nota.** Reduce el **contexto de build** y acelera las compilaciones evitando subir archivos innecesarios al daemon de Docker.
   {: .lab-note .info .compact}
 
   ```gitignore
@@ -138,7 +138,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 13.** Valida la creacion de la estructura de tu proyecto, escribe el siguiente comando.
 
-  > **NOTA:** También puedes validarlo en el explorador de archivos de VS Code.
+  > **Nota.** También puedes validarlo en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -173,7 +173,7 @@ Crearás una API con Express con `/hello` y `/health`. Será el backend que expo
 
 - **Paso 15.** Copia y pega el siguiente codigo dentro del archivo `app/server.js`.
 
-  > **NOTA:** La ruta `/health` la usarás como liveness/readiness; la ruta `/hello` será el objetivo de tus pruebas desde otros Pods.
+  > **Nota.** La ruta `/health` la usarás como liveness/readiness; la ruta `/hello` será el objetivo de tus pruebas desde otros Pods.
   {: .lab-note .info .compact}
 
   ```javascript
@@ -216,7 +216,7 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
 
 - **Paso 17.** Recuerda encender siempre **minikube**, escribe el siguiente comando.
 
-  > **NOTA:** Espera unos segundos en lo que termina de inicializar.
+  > **Nota.** Espera unos segundos en lo que termina de inicializar.
   {: .lab-note .info .compact}
 
   ```bash
@@ -225,7 +225,7 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
 
 - **Paso 18.** Apunta tu shell al daemon de Docker de Minikube y construye la imagen.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
 
   ```bash
@@ -237,7 +237,7 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
 
 - **Paso 19.** Verifica que la imagen existe en el daemon de Minikube.
 
-  > **NOTA:** Al usar el daemon de Minikube, los nodos del clúster ya "ven" la imagen sin necesidad de `docker push`.
+  > **Nota.** Al usar el daemon de Minikube, los nodos del clúster ya "ven" la imagen sin necesidad de `docker push`.
   {: .lab-note .info .compact}
 
   ```bash
@@ -302,7 +302,7 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
 
 - **Paso 22.** Verifica que el deployment y los pods esten corriendo correctamente.
 
-  > **NOTA:** Deberias observar `Running` y `READY 1/1`
+  > **Nota.** Deberias observar `Running` y `READY 1/1`
   {: .lab-note .info .compact}
 
   ```bash
@@ -335,7 +335,7 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
    
 - **Paso 25.** Verifica que el service este corriendo correctamente.
 
-  > **NOTA:** Debes ver Service tipo **ClusterIP** sin External-IP
+  > **Nota.** Debes ver Service tipo **ClusterIP** sin External-IP
   {: .lab-note .info .compact}
 
   ```bash
@@ -346,7 +346,7 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
 
 - **Paso 26.** Observa el detalle del Service.
 
-  > **NOTA:**
+  > **Nota.**
   - Anota el valor de **ClusterIP** y que el puerto 80 se traducira a **3000 (TARGET PORT)**
   - Con **2 réplicas**, el Service balanceará tráfico entre Pods relacionados por la etiqueta `app: clusterip-app`.
   - El DNS interno te permitirá llamarlo por nombre.
@@ -380,7 +380,7 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
 
 - **Paso 28.** Dentro del Pod, ejecuta los siguientes comandos:
 
-  > **NOTA:**
+  > **Nota.**
   - Forma corta (mismo namespace):
   - Si el Pod cliente está en el **mismo namespace** `default`, puede usar el **nombre corto**.
   {: .lab-note .info .compact}
@@ -391,7 +391,7 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
 
   ![micint]({{ page.images_base | relative_url }}/10.png)
 
-  > **NOTA:**
+  > **Nota.**
   - Forma FQDN explícita:
   - El **FQDN** siempre funciona e incluye `namespace.svc.cluster.local`.
   {: .lab-note .info .compact}
