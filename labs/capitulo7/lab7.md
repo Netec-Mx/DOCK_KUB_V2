@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: "Práctica 7: Despliegue de una aplicación Node.js. en Kubernetes"
+title: "Práctica 7. Despliegue de una aplicación Node.js. en Kubernetes"
 permalink: /capitulo7/lab7/
 images_base: /labs/capitulo7/img
 duration: "60 minutos"
@@ -40,7 +40,7 @@ next: /capitulo8/lab8/
 
 ---
 
-### Tarea 1: Crear la estructura del proyecto
+### Tarea 1. Crear la estructura del proyecto
 
 Organizar el código, la configuración de Kubernetes y el Dockerfile para empaquetar la app con su UI.
 
@@ -50,7 +50,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/17.png)
 
@@ -58,32 +58,32 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
   ![micint]({{ page.images_base | relative_url }}/18.png)
 
-- **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
-  > **NOTA:** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
+  > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
 
-- **Paso 6.** Crea el directorio para trabajar en la **práctica**:
+- **Paso 6.** Crea el directorio para trabajar en la **práctica**.
 
-  > **NOTA:** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
+  > **Nota.** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
   {: .lab-note .info .compact}
 
   ```bash
   mkdir lab7-k8snodeapp && cd lab7-k8snodeapp
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio.
 
-  > **NOTA:** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
+  > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
-- **Paso 8.** Crearás la siguiente estructura inicial del proyecto de la aplicación:
+- **Paso 8.** Crearás la siguiente estructura inicial del proyecto de la aplicación.
 
-  > **NOTA:**  
+  > **Notas**  
   - `public/` contiene la UI estática que Express servirá.
   - `k8s/` aloja los manifiestos YAML.
   {: .lab-note .info .compact}
@@ -105,7 +105,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 9.** Ahora crea la carpeta **api/** y sus archivos vacios.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
   {: .lab-note .info .compact}
 
   ```bash
@@ -114,7 +114,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 10.** Muy bien continua la creación del directorio **k8s/** con los manifiestos vacios.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
   {: .lab-note .info .compact}
 
   ```bash
@@ -123,16 +123,16 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 11.** Crea los ultimos archivos del proyecto **.dockerignore** y **Dockerfile**
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab7-k8snodeapp**.
   {: .lab-note .info .compact}
 
   ```bash
   touch .dockerignore Dockerfile
   ```
 
-- **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
+- **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias.
 
-  > **NOTA:** Evita copiar artefactos innecesarios hacia la imagen, manteniéndola ligera.
+  > **Nota.** Evita copiar artefactos innecesarios hacia la imagen, manteniéndola ligera.
   {: .lab-note .info .compact}
 
   ```gitignore
@@ -151,7 +151,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 13.** Valida la creación de la estructura de tu proyecto, escribe el siguiente comando.
 
-  > **NOTA:** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VSCode.
+  > **Nota.** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -166,15 +166,15 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 ---
 
-### Tarea 2: Implementar la aplicación con interfaz y Socket.IO
+### Tarea 2. Implementar la aplicación con interfaz y Socket.IO
 
 Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un **contador global** que se incrementa al hacer clic y se sincroniza en tiempo real en todos los clientes.
 
 #### Tarea 2.1
 
-- **Paso 14.** Abre el archivo `api/package.json` agrega las sieguientes dependencias para la aplicación:
+- **Paso 14.** Abre el archivo `api/package.json` agrega las sieguientes dependencias para la aplicación.
 
-  > **NOTA:** `socket.io` simplifica la comunicación bidireccional en tiempo real vía WebSocket/fallbacks.
+  > **Nota.** `socket.io` simplifica la comunicación bidireccional en tiempo real vía WebSocket/fallbacks.
   {: .lab-note .info .compact}
 
   ```json
@@ -192,9 +192,9 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
   }
   ```
 
-- **Paso 15.** Abre el archivo `api/server.js` y agrega la siguiente logica para la aplicacion:
+- **Paso 15.** Abre el archivo `api/server.js` y agrega la siguiente logica para la aplicacion.
 
-  > **NOTA:** El contador es **por Pod** (memoria local). Con 2 réplicas, cada Pod tendrá su propio contador (verás valores distintos si tus requests llegan a diferentes Pods).
+  > **Nota.** El contador es **por Pod** (memoria local). Con 2 réplicas, cada Pod tendrá su propio contador (verás valores distintos si tus requests llegan a diferentes Pods).
   {: .lab-note .info .compact}
 
   ```javascript
@@ -246,9 +246,9 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
   });
   ```
 
-- **Paso 16.** Abre el archivo `api/public/index.html` agrega el siguiente codigo que sera la interfaz grafica de ejemplo:
+- **Paso 16.** Abre el archivo `api/public/index.html` agrega el siguiente codigo que sera la interfaz grafica de ejemplo.
 
-  > **NOTA:** Cada clic emite un evento al servidor; el servidor actualiza el contador y lo **difunde** a todos los clientes conectados a **ese Pod**.
+  > **Nota.** Cada clic emite un evento al servidor; el servidor actualiza el contador y lo **difunde** a todos los clientes conectados a **ese Pod**.
   {: .lab-note .info .compact}
 
   ```html
@@ -310,7 +310,7 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
 - **Paso 17.** Es importante siempre probar en un entorno local para identificar cualquier problema a tiempo. Ejecuta el siguiente comando para la prueba.
 
-  > **NOTA:** Este comando se ejecuta desde el directorio **lab7-k8snodeapp**
+  > **Nota.** Este comando se ejecuta desde el directorio **lab7-k8snodeapp**
   {: .lab-note .info .compact}
 
   ```bash
@@ -321,7 +321,7 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
 - **Paso 18.** Abre el navegador **Google Chrome** y verifica cada una de las siguientes URLs
 
-  > **NOTA:** En un navegador (Da clics): 
+  > **Nota.** En un navegador (Da clics). 
   {: .lab-note .info .compact}  
   
   ```bash
@@ -330,7 +330,7 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-  - Endpoint de salud (Abre otra pestaña):
+  - Endpoint de salud (Abre otra pestaña).
 
   ```bash
   http://localhost:3000/health
@@ -338,7 +338,7 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
   ![micint]({{ page.images_base | relative_url }}/6.png)
   
-  - Endpoint de título (Abre otra pestaña):
+  - Endpoint de título (Abre otra pestaña).
   
   ```bash
   http://localhost:3000/config
@@ -348,7 +348,7 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
 - **Paso 19.** En la terminal donde esta activa la aplicación de **NodeJs** rompe el proceso con `CTRL + c`, y escribe el siguiente comando.
 
-  > **NOTA:**
+  > **Notas**
   - Debes regresar al directorio **lab7-k8snodeapp**
   - Tambien limpia los archivos de la prueba local.
   - Tarda unos segundos en limpiar.
@@ -368,15 +368,15 @@ Crear una app Express que sirva una UI estática con Socket.IO. La UI muestra un
 
 ---
 
-### Tarea 3: Crear Dockerfile e imagen y cargarla en Minikube
+### Tarea 3. Crear Dockerfile e imagen y cargarla en Minikube
 
 Empaquetar la app y construir la imagen dentro del demonio Docker de Minikube para que el clúster pueda usarla.
 
 #### Tarea 3.1
 
-- **Paso 20.** Abre el archivo `Dockerfile` que esta en la raíz y agrega el siguiente codigo:
+- **Paso 20.** Abre el archivo `Dockerfile` que esta en la raíz y agrega el siguiente codigo.
 
-  > **NOTA:** Imagen minimal basada en Alpine, suficiente para nuestra practica.
+  > **Nota.** Imagen minimal basada en Alpine, suficiente para nuestra práctica.
   {: .lab-note .info .compact}
 
   ```dockerfile
@@ -396,7 +396,7 @@ Empaquetar la app y construir la imagen dentro del demonio Docker de Minikube pa
 
 - **Paso 21.** Antes de aplicar el manifiesto, primero necesitamos encender el nodo de **Minikube**, escribe el siguiente comando.
 
-  > **NOTA:** Espera unos minutos en lo que se levanta.
+  > **Nota.** Espera unos minutos en lo que se levanta.
   {: .lab-note .info .compact}
 
   ```bash
@@ -405,9 +405,9 @@ Empaquetar la app y construir la imagen dentro del demonio Docker de Minikube pa
 
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
-- **Paso 22.** Apuntar Docker al demonio de Minikube y construir imagen:
+- **Paso 22.** Apuntar Docker al demonio de Minikube y construir imagen.
 
-  > **NOTA:**
+  > **Notas**
   - Construir dentro del daemon de Minikube evita tener que subir la imagen a un registry.
   - La imagen `k8s-node-ui:1.0` debe listarse en `docker images`.
   {: .lab-note .info .compact}
@@ -427,13 +427,13 @@ Empaquetar la app y construir la imagen dentro del demonio Docker de Minikube pa
 
 ---
 
-### Tarea 4: Crear ConfigMap para el título de la app
+### Tarea 4. Crear ConfigMap para el título de la app
 
 El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante un ConfigMap.
 
 #### Tarea 4.1
 
-- **Paso 23.** Abre el archivo `k8s/configmap.yaml` y agrega las siguiente etiqueta:
+- **Paso 23.** Abre el archivo `k8s/configmap.yaml` y agrega las siguiente etiqueta.
 
   ```yaml
   apiVersion: v1
@@ -446,7 +446,7 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
 
 - **Paso 24.** Verificamos que minikibe haya encendido bien, escribe el siguiente comando
 
-  > **NOTA:** Verifica que los nodos esten funcionando.
+  > **Nota.** Verifica que los nodos esten funcionando.
   {: .lab-note .info .compact}
 
   ```bash
@@ -457,7 +457,7 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
 
 - **Paso 25.** Ahora si, aplica el manifiesto del archivo **configmap**.
 
-  > **NOTA:**
+  > **Notas**
   - El comando se ejecuta desde el directorio **lab7-k8snodeapp**
   - Aplica y valida que se haya configurado correctamente.
   - Separar configuración del código permite cambiar títulos/slogans sin reconstruir la imagen.
@@ -476,13 +476,13 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
 
 ---
 
-### Tarea 5: Deployment con 2 réplicas y variables desde ConfigMap
+### Tarea 5. Deployment con 2 réplicas y variables desde ConfigMap
 
 Crear un Deployment con **2 réplicas**, **liveness/readiness probes** y variable `APP_TITLE` inyectada desde el ConfigMap.
 
 #### Tarea 5.1
 
-- **Paso 26.** Abre el archivo `k8s/deployment.yaml` y define la configuracion que implementara los pods:
+- **Paso 26.** Abre el archivo `k8s/deployment.yaml` y define la configuracion que implementara los pods.
 
   ```yaml
   apiVersion: apps/v1
@@ -514,7 +514,7 @@ Crear un Deployment con **2 réplicas**, **liveness/readiness probes** y variabl
 
 - **Paso 27.** Aplica el manifiesto y verifica que este listo cuando los pods terminen de crearse.
 
-  > **NOTA:**
+  > **Notas**
   - En caso de que tengas un error **ImagePullBackOff** usa este comando para cargar la imagen a minikube `minikube image load k8s-node-ui:1.0`
   - Con 2 réplicas, cada Pod mantiene su propio contador en memoria; esto evidencia el concepto de **stateful vs stateless** y la necesidad de almacenes compartidos si quisiéramos un contador global.
   {: .lab-note .info .compact}
@@ -533,15 +533,15 @@ Crear un Deployment con **2 réplicas**, **liveness/readiness probes** y variabl
 
 ---
 
-### Tarea 6: Service NodePort para exponer la UI
+### Tarea 6. Service NodePort para exponer la UI
 
 Crear un Service tipo **NodePort** que expone el puerto 3000 de los Pods en el puerto 30080 del nodo Minikube.
 
 #### Tarea 6.1
 
-- **Paso 28.** Abre el archivo `k8s/service.yaml` agrega el siguiente contenido para exponer la aplicacion:
+- **Paso 28.** Abre el archivo `k8s/service.yaml` agrega el siguiente contenido para exponer la aplicacion.
 
-  > **NOTA:** La propiedad `NodePort` hace accesible el servicio desde fuera del clúster usando la IP del nodo y un puerto alto.
+  > **Nota.** La propiedad `NodePort` hace accesible el servicio desde fuera del clúster usando la IP del nodo y un puerto alto.
   {: .lab-note .info .compact}
 
   ```yaml
@@ -559,7 +559,7 @@ Crear un Service tipo **NodePort** que expone el puerto 3000 de los Pods en el p
         nodePort: 30080
   ```
 
-- **Paso 29.** Ejecuta los siguientes comandos sobre el archivo service:
+- **Paso 29.** Ejecuta los siguientes comandos sobre el archivo service.
 
   - Aplica
 
@@ -585,18 +585,18 @@ Crear un Service tipo **NodePort** que expone el puerto 3000 de los Pods en el p
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-- **Paso 30.** Abre tu navegador de **Google Chrome** para validar la aplicacion:
+- **Paso 30.** Abre tu navegador de **Google Chrome** para validar la aplicacion.
 
 - **Paso 31.** Ahora el comando `minikube service node-ui-service --url` que se quedo activo en la terminal devolvio una **URL** parecida al siguiente comando.
 
-  > **NOTA:**
-  - Cambia las letas **`x`** por el numero de puerto que te asigno.
+  > **Notas**
+  - Cambia las letas **`x`** por el número de puerto que te asigno.
   - Copia y pega la URL en tu navegador.
   - Da clics, es normal que tarde unos segundos en lo que los pods reciben la información.
   {: .lab-note .info .compact}
 
-  > **IMPORTANTE:**
-  - Dale unos minutos si el contador de clics no muestra inmediatamente los numeros.
+  > **Importante**
+  - Dale unos minutos si el contador de clics no muestra inmediatamente los números.
   - Actualiza la pagina y vuelve a dar clics.
   {: .lab-note .important .compact}
 
@@ -614,7 +614,7 @@ Crear un Service tipo **NodePort** que expone el puerto 3000 de los Pods en el p
 
 ---
 
-### Tarea 7: Limpieza de recursos
+### Tarea 7. Limpieza de recursos
 
 Siempre es importante detener y eliminar recursos creados que no se usaran.
 
@@ -630,7 +630,7 @@ Siempre es importante detener y eliminar recursos creados que no se usaran.
 
 - **Paso 34.** Verifica que haya quedado limpio.
 
-  > **NOTA:** La propiedad `service/kubernetes` no se borra, es parte del cluster.
+  > **Nota.** La propiedad `service/kubernetes` no se borra, es parte del cluster.
   {: .lab-note .info .compact}
 
   ```bash
