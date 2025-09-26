@@ -48,7 +48,7 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 
 - **Paso 1.** Inicia sesión en tu máquina de trabajo como usuario con permisos administrativos.  
 
-- **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
+- **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
 - **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
@@ -191,7 +191,7 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 
 #### Tarea 4.1
 
-- **Paso 16.** Ejecuta el contenedor de ubuntu en forma desasociada y escribe el siguiente comando.
+- **Paso 16.** Ejecuta el contenedor de Ubuntu en forma desasociada y escribe el siguiente comando.
 
   ```bash
   docker run -d -it ubuntu bash
@@ -215,7 +215,7 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 
   ![micint]({{ page.images_base | relative_url }}/11.png)
 
-- **Paso 19.** Ve los detalles de un contenedor, **copia el ID del contenedor ubuntu en ejecución, el valor de la primera columna del comando anterior y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
+- **Paso 19.** Ve los detalles de un contenedor, **copia el ID del contenedor Ubuntu en ejecución, el valor de la primera columna del comando anterior y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
 
   > **Nota.** El comando tiene una salida muy extensa, la imagen es solo representativa.
   {: .lab-note .info .compact}
@@ -226,7 +226,7 @@ Manejar los comandos más importantes para trabajar con contenedores en ejecuci�
 
   ![micint]({{ page.images_base | relative_url }}/12.png)
 
-- **Paso 20.** Ve los logs de un contenedor, **sustituye el ID del contenedor ubuntu en ejecución y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
+- **Paso 20.** Ve los logs de un contenedor, **sustituye el ID del contenedor Ubuntu en ejecución y sustitúyelo en la etiqueta `<ID_CONTENEDOR>` de este comando.**
 
   > **Nota.** El contenedor no mostrará logs, ya que eso depende de si se generan o de que las aplicaciones los muestren.
   {: .lab-note .info .compact}
@@ -266,7 +266,7 @@ Aprender a controlar el ciclo de vida de los contenedores.
 
 #### Tarea 5.1
 
-- **Paso 22.** Para detener el contenedor, escribe el siguiente comando: primero obtén el valor del ID y sustitúyelo en la etiqueta **`<ID_CONTAINER>`** del contenedor que deseas parar. En este caso, el ID del contenedor **ubuntu**.
+- **Paso 22.** Para detener el contenedor, escribe el siguiente comando: primero obtén el valor del ID y sustitúyelo en la etiqueta **`<ID_CONTAINER>`** del contenedor que deseas parar. En este caso, el ID del contenedor **Ubuntu**.
 
   ```bash
   docker ps
@@ -278,7 +278,7 @@ Aprender a controlar el ciclo de vida de los contenedores.
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-- **Paso 23.** Si deseas iniciar nuevamente el contenedor detenido, ejecuta el siguiente comando, pero sustituye el ID del contenedor ubuntu.
+- **Paso 23.** Si deseas iniciar nuevamente el contenedor detenido, ejecuta el siguiente comando, pero sustituye el ID del contenedor Ubuntu.
 
   ```bash
   docker start <ID_CONTENEDOR>
@@ -292,7 +292,7 @@ Aprender a controlar el ciclo de vida de los contenedores.
   docker stop <ID_CONTENEDOR>
   ```
 
-- **Paso 25.** Ya detenido, escribe los siguientes comandos. **Recuerda sustituir el ID del contenedor ubuntu.**
+- **Paso 25.** Ya detenido, escribe los siguientes comandos. **Recuerda sustituir el ID del contenedor Ubuntu.**
 
   > **Nota.** Primero **visualiza** los contenedores detenidos. Luego, **selecciona** los ID del contenedor a eliminar.
   {: .lab-note .info .compact}
