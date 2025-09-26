@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: "Práctica 10: Despliegue con almacenamiento persistente usando PVC"
+title: "Práctica 10. Despliegue con almacenamiento persistente usando PVC"
 permalink: /capitulo10/lab10/
 images_base: /labs/capitulo10/img
 duration: "60 minutos"
@@ -60,14 +60,14 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
 
-  > **NOTA:** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
+  > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
 
 - **Paso 6.** Crea el directorio para trabajar en la **práctica**.
 
-  > **NOTA:** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
+  > **Nota.** Aislar cada práctica evita colisiones de archivos y facilita montar rutas con precisión.
   {: .lab-note .info .compact}
 
   ```bash
@@ -76,14 +76,14 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
 
-  > **NOTA:** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
+  > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
 - **Paso 8.** Esta sera la estructura de los directorios de la aplicación:
 
-  > **NOTA:**  
+  > **Notas**  
   - Separar `app/` (código) 
   - `k8s/` agrupa todos los manifiestos. 
   {: .lab-note .info .compact}
@@ -106,7 +106,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 9.** Ahora crea la carpeta **app/** y sus archivos vacios.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**
   {: .lab-note .info .compact}
 
   ```bash
@@ -115,7 +115,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 10.** Muy bien continua la cración del directorio **k8s/** con los manifiestos vacios.
 
-  > **NOTA:**  El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**. Estos comandos ya crean los directorios y archivos.
+  > **Nota.**  El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**. Estos comandos ya crean los directorios y archivos.
   {: .lab-note .info .compact}
 
   ```bash
@@ -124,7 +124,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 11.** Crea los ultimos dos archivos del proyecto **.dockerignore** y **Dockerfile**.
 
-  > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**
   {: .lab-note .info .compact}
 
   ```bash
@@ -133,7 +133,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
 
-  > **NOTA:** Reduce el **contexto de build** y acelera las compilaciones evitando subir archivos innecesarios al daemon de Docker.
+  > **Nota.** Reduce el **contexto de build** y acelera las compilaciones evitando subir archivos innecesarios al daemon de Docker.
   {: .lab-note .info .compact}
 
   ```gitignore
@@ -152,7 +152,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 13.** Valida la creacion de la estructura de tu proyecto, escribe el siguiente comando.
 
-  > **NOTA:** También puedes validarlo en el explorador de archivos de VS Code.
+  > **Nota.** También puedes validarlo en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -175,7 +175,7 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
 
 - **Paso 14.** Dentro del archivo `app/package.json` agrega las siguientes dependencias.
 
-  > **NOTA:** 
+  > **Notas** 
   - `express` sirve la API/UI.
   - `cors` permite pruebas desde otros orígenes si fuese necesario.
   {: .lab-note .info .compact}
@@ -195,7 +195,7 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
 
 - **Paso 15.** Abre el archivo `app/server.js` y agrega el siguiente bloque de codigo para la logica de la aplicación.
 
-  > **NOTA:** El archivo **`/data/contacts.json`** es el punto de persistencia donde montaremos el PVC.
+  > **Nota.** El archivo **`/data/contacts.json`** es el punto de persistencia donde montaremos el PVC.
   {: .lab-note .info .compact}
 
   ```javascript
@@ -274,7 +274,7 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
 
 - **Paso 16.** Dentro del archivo `app/public/index.html` agrega el codigo para la pagina web y estilos sencillos.
 
-  > **NOTA:** UI mínima para **crear/listar/eliminar**. Perfecta para verificar persistencia fácilmente.
+  > **Nota.** UI mínima para **crear/listar/eliminar**. Perfecta para verificar persistencia fácilmente.
   {: .lab-note .info .compact}
   
   ```html
@@ -394,7 +394,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
 - **Paso 19.** Ahora regresa a la terminal de **VSCode** y escribe el siguiente comando para autenticar la terminal a **Docker Hub**.
 
-  > **NOTA:** Sigue los pasos de la terminal para autenticarte.
+  > **Nota.** Sigue los pasos de la terminal para autenticarte.
   {: .lab-note .info .compact}
 
   ```bash
@@ -403,7 +403,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
 - **Paso 20.** Compila la imagen, escribe el siguiente comando:
 
-  > **NOTA:**
+  > **Notas**
   - El comando se ejecuta dentro del directorio raíz **lab10-k8spvcagenda**.
   - Ajusta las rutas si es necesario
   {: .lab-note .info .compact}
@@ -416,7 +416,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
 - **Paso 21.** Ahora etiqueta la imagen y subela al repositorio remoto en **Docker Hub**.
 
-  > **NOTA:**
+  > **Notas**
   - Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, **puede ser el mismo que usaste en la practica anterior**
   - El comando no dara salida a menos que haya un error.
   {: .lab-note .info .compact}
@@ -429,7 +429,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
 - **Paso 22.** Si todo sale bien, el siguiente comando subira la imagen al repositorio remoto:
 
-  > **NOTA:** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la practica anterior
+  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la practica anterior
   {: .lab-note .info .compact}
 
   ```bash
@@ -452,7 +452,7 @@ Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en m
 
 - **Paso 23.** Abre el archivo `k8s/namespace.yaml` y define la siguiente configuración para crear el namespace.
 
-  > **NOTA:** Un namespace evita mezclar objetos con otras prácticas y permite reglas específicas.
+  > **Nota.** Un namespace evita mezclar objetos con otras prácticas y permite reglas específicas.
   {: .lab-note .info .compact}
 
   ```yaml
@@ -466,7 +466,7 @@ Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en m
 
 - **Paso 24.** Primero asegurate de encender siempre minikube, escribe el siguiente comando.
 
-  > **NOTA:** Espera unos segundos en lo que termina de inicializar.
+  > **Nota.** Espera unos segundos en lo que termina de inicializar.
   {: .lab-note .info .compact}
 
   ```bash
@@ -511,7 +511,7 @@ Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en m
 
 - **Paso 29.** Verifica que se haya creado correctamente el **Namespace**
 
-  > **NOTA:** `Bound` indica que el PVC encontró un PV compatible (StorageClass por defecto).
+  > **Nota.** `Bound` indica que el PVC encontró un PV compatible (StorageClass por defecto).
   {: .lab-note .info .compact}
 
   ```bash
@@ -534,7 +534,7 @@ Crear un Deployment (1 réplica) que **monte el PVC** en `/data`. Añadir **prob
 
 - **Paso 30.** Bien!, abre el archivo `k8s/deployment.yaml` y agrega la siguiente definición del deployment.
 
-  > **NOTA:** La propiedad `fsGroup: 1000` hace que el sistema de archivos montado pertenezca al **grupo** del contenedor (uid/gid = 1000), garantizando permisos de escritura para el usuario `node` (no root). Una sola réplica evita conflictos de escritura en el **mismo archivo JSON**.
+  > **Nota.** La propiedad `fsGroup: 1000` hace que el sistema de archivos montado pertenezca al **grupo** del contenedor (uid/gid = 1000), garantizando permisos de escritura para el usuario `node` (no root). Una sola réplica evita conflictos de escritura en el **mismo archivo JSON**.
   {: .lab-note .info .compact}
 
   > **IMPORTANTE:** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la practica anterior.
@@ -608,7 +608,7 @@ Crear un Deployment (1 réplica) que **monte el PVC** en `/data`. Añadir **prob
 
 - **Paso 32.** Verifica que el pod este corriendo correctamente.
 
-  > **NOTA:** Deberias observar `Running` y `READY 1/1`  
+  > **Nota.** Deberias observar `Running` y `READY 1/1`  
   {: .lab-note .info .compact}
 
   ```bash
@@ -626,7 +626,7 @@ Crear un Deployment (1 réplica) que **monte el PVC** en `/data`. Añadir **prob
 
 - **Paso 34.** Revisa los detalles del pod.
 
-  > **NOTA:** Identifica la seccion **`Mounts`** y **`Volumes`**
+  > **Nota.** Identifica la seccion **`Mounts`** y **`Volumes`**
   {: .lab-note .info .compact}
 
   ```bash
@@ -649,7 +649,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 - **Paso 35.** Dentro del archivo `k8s/service.yaml` agrega la siguiente definición de exposición.
 
-  > **NOTA:** La propiedad `NodePort` expone rápidamente el servicio sin requerir Ingress.
+  > **Nota.** La propiedad `NodePort` expone rápidamente el servicio sin requerir Ingress.
   {: .lab-note .info .compact}
 
   ```yaml
@@ -682,7 +682,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 - **Paso 38.** Abre la URL en el navegador.
 
-  > **NOTA:**
+  > **Notas**
   - Crea **2–3 contactos**.  
   - Actualiza y verifica que se listan. 
   - Con esto validamos que **API + UI** funcionan antes de probar persistencia.
@@ -694,7 +694,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 - **Paso 40.** Reinicia el Pod para probar persistencia.
 
-  > **NOTA:**
+  > **Notas**
   - Espera a que el nuevo Pod esté `Running`/`READY 1/1`.
   - Rompe el proceso de verificación con **`CTRL + c`**
   {: .lab-note .info .compact}
@@ -708,7 +708,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 - **Paso 41.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí.
 
-  > **NOTA:**
+  > **Notas**
   - Si todo salio bien debes ver tus contactos.
   - El **minikube service** asignara un nuevo puerto
   {: .lab-note .info .compact}
@@ -723,7 +723,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 - **Paso 43.** Tambien puedes inspeccionar los datos dentro del Pod por CLI:
 
-  > **NOTA:** El contenedor se destruye/recrea, **pero el PVC permanece**. Por eso el archivo vuelve a estar con tus datos.
+  > **Nota.** El contenedor se destruye/recrea, **pero el PVC permanece**. Por eso el archivo vuelve a estar con tus datos.
   {: .lab-note .info .compact}
 
   ```bash
@@ -747,7 +747,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 44.** En el archivo `app/public/index.html` reemplaza todo el codigo existente por este nuevo.
 
-  > **NOTA:**
+  > **Notas**
   - Cambios de estilos en los titulos, botones (Simula una nueva versión)
   - Cambio en el titulo de la aplicación
   {: .lab-note .info .compact}
@@ -833,7 +833,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 45.** Reconstruye la imagen con una nueva etiqueta.
 
-  > **NOTA:** Versionar imágenes permite **rollback** rápido si algo falla.
+  > **Nota.** Versionar imágenes permite **rollback** rápido si algo falla.
   {: .lab-note .info .compact}
 
   ```bash
@@ -842,7 +842,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 46.** Ahora etiqueta la nueva imagen creada.
 
-  > **NOTA:**
+  > **Notas**
   - Sustituye `TU_USUARIO/TU_REPOSITORIO` por el de tu cuenta, **puede ser el mismo que usaste en la practica anterior**
   - El comando no dara salida a menos que haya un error.
   {: .lab-note .info .compact}
@@ -853,7 +853,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 47.** Sube la imagen a tu repositorio remoto:
 
-  > **NOTA:** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la practica anterior
+  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la practica anterior
   {: .lab-note .info .compact}
 
   ```bash
@@ -862,7 +862,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 48.** Abre el archivo `k8s/deployment.yaml` para ajustar a la nueva imagen.
 
-  > **NOTA:**
+  > **Notas**
   - En la **linea 24** del archivo solo agrega al final `-v1.1`.
   - Quizas la linea pueda variar, si es asi identificala.
   - Puedes apoyarte de la imagen, cuidado de no borrar nadamas.
@@ -878,7 +878,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 - **Paso 50.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí ahora con el **nuevo diseño**.
 
-  > **NOTA:**
+  > **Notas**
   - Recuerda abrir la URL que entrega **minikube service**
   - Si todo salio bien debes ver tus contactos.
   {: .lab-note .info .compact}
@@ -905,7 +905,7 @@ Siempre es importante detener y eliminar recursos creados que no se usaran.
 
 - **Paso 52.** Ejecuta el siguiente comando que limpiara todo lo creado en el cluster.
 
-  > **NOTA:** Puede tardar unos segundos.
+  > **Nota.** Puede tardar unos segundos.
   {: .lab-note .info .compact}
 
   ```bash
@@ -914,7 +914,7 @@ Siempre es importante detener y eliminar recursos creados que no se usaran.
 
 - **Paso 53.** Verifica que este limpio.
 
-  > **NOTA:**
+  > **Notas**
   - `service/kubernetes` no se borra es parte del cluster.
   - Verifica que ya no aparezca **agenda-pvc** como namespace.
   {: .lab-note .info .compact}
