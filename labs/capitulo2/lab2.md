@@ -50,7 +50,7 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 
 - **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VSCode**, da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/18.png)
 
@@ -294,7 +294,7 @@ Aprender a controlar el ciclo de vida de los contenedores.
 
 - **Paso 25.** Ya detenido, escribe los siguientes comandos. **Recuerda sustituir el ID del contenedor Ubuntu.**
 
-  > **Nota.** Primero **visualiza** los contenedores detenidos. Luego, **selecciona** los ID del contenedor a eliminar.
+  > **Nota.** Primero, **visualiza** los contenedores detenidos. Luego, **selecciona** los ID del contenedor a eliminar.
   {: .lab-note .info .compact}
 
   ```bash
@@ -501,7 +501,7 @@ En esta tarea documentarás los comandos esenciales de Docker en un archivo **RE
   | Comando | Descripción |
   |---------|-------------|
   | `docker run hello-world` | Ejecuta un contenedor de prueba para validar Docker. |
-  | `docker ps -a` | Lista todos los contenedores, incluidos detenidos. |
+  | `docker ps -a` | Lista todos los contenedores, incluidos los detenidos. |
   | `docker run -it ubuntu bash` | Ejecuta Ubuntu en modo interactivo. |
   | `cat /etc/os-release` | Muestra información del sistema operativo. |
   | `docker run -d -it ubuntu bash` | Ejecuta Ubuntu en segundo plano. |
@@ -516,9 +516,9 @@ En esta tarea documentarás los comandos esenciales de Docker en un archivo **RE
   | `docker rmi alpine` | Elimina la imagen Alpine local. |
   | `docker run -d --name mi_nginx nginx` | Ejecuta un contenedor Nginx con nombre personalizado. |
   | `docker port mi_nginx` | Muestra los puertos expuestos. |
-  | `docker top mi_nginx` | Lista procesos dentro del contenedor. |
-  | `docker container prune` | Elimina contenedores detenidos. |
-  | `docker system prune` | Limpia recursos no utilizados. |
+  | `docker top mi_nginx` | Lista los procesos dentro del contenedor. |
+  | `docker container prune` | Elimina los contenedores detenidos. |
+  | `docker system prune` | Limpia los recursos no utilizados. |
   ```
 
 {% assign results = site.data.task-results[page.slug].results %}
