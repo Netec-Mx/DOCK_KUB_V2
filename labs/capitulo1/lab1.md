@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: "Práctica 1: Despliegue de una aplicación Node.js simple con Docker"
+title: "Práctica 1. Despliegue de una aplicación Node.js simple con Docker"
 permalink: /capitulo1/lab1/
 images_base: /labs/capitulo1/img
 duration: "60 minutos"
