@@ -1,6 +1,6 @@
 ---
 layout: lab
-title: " Práctica 12: Despliegue de aplicación con Ingress en Kubernetes"
+title: " Práctica 12. Despliegue de aplicación con Ingress en Kubernetes"
 permalink: /capitulo12/lab12/
 images_base: /labs/capitulo12/img
 duration: "60 minutos"
