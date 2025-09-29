@@ -44,7 +44,7 @@ Crear la estructura de carpetas con backend y frontend.
 
 - **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode**, da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code**, da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
@@ -52,9 +52,9 @@ Crear la estructura de carpetas con backend y frontend.
 
   ![micint]({{ page.images_base | relative_url }}/10.png)
 
-- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**.
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
-  > **Nota.** Si te quedaste en el directorio de una práctica usa **`cd ..`** para retornar a la raíz de laboratorios.
+  > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para retornar a la raíz de laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
@@ -65,7 +65,7 @@ Crear la estructura de carpetas con backend y frontend.
   mkdir lab3-dockermultistage && cd lab3-dockermultistage
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio.
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio.
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
@@ -95,7 +95,7 @@ Implementar una API REST en Node.js. Se reutilizará el backend creado en la Pr�
 
 - **Paso 9.** Ahora, escribe el siguiente comando para validar que se haya copiado correctamente la carpeta **backend**.
 
-  > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VSCode.
+  > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -129,7 +129,7 @@ Reutilizar el directorio **frontend** que tiene el sitio web estático.
 
 - **Paso 11.** Ahora, escribe el siguiente comando para validar que se haya copiado correctamente la carpeta **frontend**.
 
-  > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VSCode.
+  > **Nota.** Recuerda que también puedes visualizarlo en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -178,7 +178,7 @@ Crear un Dockerfile simple y analizar el tamaño.
   CMD ["node", "backend/server.js"]
   ```
 
-- **Paso 14.** Compila el proyecto de docker, escribe el siguiente comando dentro de la terminal.
+- **Paso 14.** Compila el proyecto de docker. Escribe el siguiente comando dentro de la terminal.
 
   > **Nota.** El comando se ejecuta desde la carpeta **lab3...**
   {: .lab-note .info .compact}
@@ -187,7 +187,7 @@ Crear un Dockerfile simple y analizar el tamaño.
   docker build -t contactos-tradicional .
   ```
 
-- **Paso 15.** Ahora valida el tamaño de la imagen creada después de la compilación.
+- **Paso 15.** Ahora, valida el tamaño de la imagen creada después de la compilación.
 
   > **Nota.** Aproximadamente, el tamaño será de `207MB`, aunque puede diferir.
   {: .lab-note .info .compact}
@@ -400,7 +400,7 @@ Crear un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más
 
 - **Paso 32.** Escribe el siguiente comando para observar el resultado.
 
-  > **Nota.** Tanto la version **opt** como la **slim** usan **Multi-Stage**. Pero **slim** es mucho mas minimalista, ya que la propiedad **--from=deps** copia solo lo que se necesita.
+  > **Nota.** Tanto la versión **opt** como la **slim** usan **Multi-Stage**,pero **slim** es mucho más minimalista, ya que la propiedad **--from=deps** copia solo lo que se necesita.
   {: .lab-note .info .compact}
 
   ```bash
