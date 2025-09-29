@@ -266,7 +266,7 @@ Implementar un servidor **Express** que maneje rutas para agregar, listar, actua
   http://localhost:3000/contactos
   ```
 
-- **Paso 21.** Como resultado deberas ver un JSON con el contacto registrado.
+- **Paso 21.** Como resultado, deberás ver un JSON con el contacto registrado.
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
