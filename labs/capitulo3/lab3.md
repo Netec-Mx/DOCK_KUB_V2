@@ -5,7 +5,7 @@ permalink: /capitulo3/lab3/
 images_base: /labs/capitulo3/img
 duration: "60 minutos"
 objective:
-  - El objetivo de esta práctica es que el participante aprenda a construir imágenes Docker optimizadas utilizando la técnica de **multi-stage builds**, comparando el tamaño de la imagen con y sin multietapa. Usaremos como ejemplo una aplicación Node.js con Express que sirva un frontend estático y una API REST.
+  - El objetivo de esta práctica es que el participante aprenda a construir imágenes Docker optimizadas utilizando la técnica de **Multi-Stage Builds**, comparando el tamaño de la imagen con y sin multietapa. Usaremos como ejemplo una aplicación Node.js con Express que sirva un frontend estático y una API REST.
 prerequisites:
   - Visual Studio Code instalado
   - Docker Desktop instalado y en ejecución
@@ -13,13 +13,13 @@ prerequisites:
   - Conocimientos básicos de Node.js y Docker
   - Haber completado la Práctica 1
 introduction:
-  - Las **imágenes multietapa** permiten separar el proceso de construcción (instalación de dependencias y compilación de frontend) del de ejecución. Con esto se reduce el tamaño de la imagen final y se evitan dependencias innecesarias en producción. En esta práctica construiremos una aplicación Node.js con un backend REST y un frontend estático en React simulado con archivos preconstruidos, para demostrar el impacto de los multi-stage builds.
+  - Las **imágenes multietapa** permiten separar el proceso de construcción (instalación de dependencias y compilación de frontend) del de ejecución. Con esto se reduce el tamaño de la imagen final y se evitan dependencias innecesarias en producción. En esta práctica construiremos una aplicación Node.js con un backend REST y un frontend estático en React simulado con archivos preconstruidos, para demostrar el impacto de los Multi-Stage Builds.
 slug: lab3
 lab_number: 3
 final_result: >
   El estudiante habrá construido una aplicación Node.js contenerizada con un **Dockerfile multietapa**, obteniendo una imagen ligera y optimizada, validando que la aplicación funciona correctamente y que el tamaño de la imagen se reduce respecto a una construcción tradicional.
 notes: 
-  - Multi-stage es aplicable a múltiples lenguajes (Java, Go, .NET).
+  - Multi-Stage es aplicable a múltiples lenguajes (Java, Go, .NET).
   - Siempre validar la funcionalidad de la aplicación antes de optimizar.
   - Para builds grandes, se recomienda usar `--target` para depuración de etapas intermedias.
 references:
@@ -112,7 +112,7 @@ Implementar una API REST en Node.js. Se reutilizará el backend creado en la Pr�
 
 ### Tarea 3. Creación del frontend
 
-Se reutilizará el directorio **frontend** que tiene el sitio web estático.
+Reutilizar el directorio **frontend** que tiene el sitio web estático.
 
 #### Tarea 3.1
 
@@ -144,9 +144,9 @@ Se reutilizará el directorio **frontend** que tiene el sitio web estático.
 
 ---
 
-### Tarea 4. Construir imagen sin multi-stage
+### Tarea 4. Construir imagen sin Multi-Stage
 
-En esta tarea crearás un Dockerfile simple y analizarás el tamaño.
+Crear un Dockerfile simple y analizar el tamaño.
 
 #### Tarea 4.1
 
@@ -164,7 +164,7 @@ En esta tarea crearás un Dockerfile simple y analizarás el tamaño.
 
 - **Paso 13.** Agrega el siguiente código al archivo **Dockerfile**.
 
-  > **Nota.** Este Dockerfile crea una imagen sin multi-stage.
+  > **Nota.** Este Dockerfile crea una imagen sin Multi-Stage.
   {: .lab-note .info .compact}
 
   ```dockerfile
@@ -209,9 +209,9 @@ En esta tarea crearás un Dockerfile simple y analizarás el tamaño.
 
 ---
 
-### Tarea 5. Construir imagen con multi-stage
+### Tarea 5. Construir imagen con Multi-Stage
 
-En esta tarea, optimizarás la construcción usando **multi-stage**.
+Optimizar la construcción usando **Multi-Stage**.
 
 #### Tarea 5.1
 
@@ -276,7 +276,7 @@ En esta tarea, optimizarás la construcción usando **multi-stage**.
 
 ### Tarea 6. Comparar resultados
 
-En esta tarea verificarás la diferencia de tamaños de las imágenes.
+Verificar la diferencia de tamaños de las imágenes.
 
 #### Tarea 6.1
 
@@ -303,7 +303,7 @@ En esta tarea verificarás la diferencia de tamaños de las imágenes.
 
 ### Tarea 7. Añadir .dockerignore (mejor caché y tamaño)
 
-En esta tarea, crearás un archivo .dockerignore para excluir archivos innecesarios y mejorar el tamaño y la caché de las imágenes.
+Crear un archivo .dockerignore para excluir archivos innecesarios y mejorar el tamaño y la caché de las imágenes.
 
 #### Tarea 7.1
 
@@ -362,7 +362,7 @@ En esta tarea, crearás un archivo .dockerignore para excluir archivos innecesar
 
 #### Tarea 8.1
 
-En esta tarea, crearás un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más ligeras y seguras.
+Crear un Dockerfile.slim con Multi-Stage minimalista para generar imágenes más ligeras y seguras.
 
 - **Paso 29.** Crea **Dockerfile.slim** para copiar únicamente lo necesario.
 
@@ -417,7 +417,7 @@ En esta tarea, crearás un Dockerfile.slim con Multi-Stage minimalista para gene
 
 ### Tarea 9. Limpieza y buenas prácticas
 
-En esta tarea, eliminarás las imágenes creadas para mantener limpio el ambiente.
+Eliminar las imágenes creadas para mantener limpio el ambiente.
 
 #### Tarea 9.1
 
