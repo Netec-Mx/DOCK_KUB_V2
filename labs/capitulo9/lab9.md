@@ -14,7 +14,7 @@ prerequisites:
   - Conocimientos básicos de Node.js, Docker y Kubernetes
   - Cuenta en Docker Hub
 introduction:
-  En Kubernetes, separar **código** de **configuración** y **credenciales** es una práctica esencial. Los **ConfigMaps** almacenan configuración **no sensible** (por ejemplo *feature flags*, títulos, endpoints), mientras que los **Secrets** guardan **datos sensibles** (tokens, claves, contraseñas) codificados en **Base64**. Los **controladores** como **Deployment**, **Job** y **CronJob** permiten mantener réplicas estables, ejecutar tareas únicas o periódicas. En este laboratorio, montarás una app que lee un archivo `config.json` desde un ConfigMap y un `SECRET_TOKEN` desde un Secret y, además, crearás un Job y un CronJob de validación.
+  En Kubernetes, separar **código** de **configuración** y **credenciales** es una práctica esencial. Los **ConfigMaps** almacenan configuración **no sensible** (por ejemplo: *feature flags*, títulos, endpoints), mientras que los **Secrets** guardan **datos sensibles** (tokens, claves, contraseñas) codificados en **Base64**. Los **controladores** como **Deployment**, **Job** y **CronJob** permiten mantener réplicas estables, ejecutar tareas únicas o periódicas. En este laboratorio, montarás una app que lee un archivo `config.json` desde un ConfigMap y un `SECRET_TOKEN` desde un Secret y, además, crearás un Job y un CronJob de validación.
 slug: lab9
 lab_number: 9
 final_result: >
@@ -54,7 +54,7 @@ Crear el esqueleto del proyecto, separando el código de la app, los manifiestos
 
 - **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal. Se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code**, da clic en el icono de la imagen para abrir la terminal. Se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/25.png)
 
@@ -269,7 +269,7 @@ Construir la imagen usando el daemon Docker de Minikube para no requerir Docker 
   CMD ["node", "server.js"]
   ```
 
-- **Paso 17.** Recuerda que debes estar autenticado a tu cuenta de **Docker Hub**.
+- **Paso 17.** Recuerda que debes estar autenticado en tu cuenta de **Docker Hub**.
 
   - Si ya tienes cuenta, da clic <a href="https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Iniciar Sesión</strong></a>.
   - Si no tienes cuenta, da clic <a href="https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Crear cuenta</strong></a>.
@@ -588,7 +588,7 @@ Crear un **Service NodePort** para exponer la app desde el host hacia el clúste
 
 ### Tarea 7. Job (controlador) para validación *one-shot*
 
-Crear un **Job** que ejecute una vez una verificación de salud llamando a `/health` del servicio. Útil para **smoke tests** post-despliegue.
+Crear un **Job** que ejecute una vez una verificación de salud llamando a `/health` del servicio. Útil para **smoke tests** posdespliegue.
 
 #### Tarea 7.1
 
@@ -630,7 +630,7 @@ Crear un **Job** que ejecute una vez una verificación de salud llamando a `/hea
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-- **Paso 40.** Finalmente, verifica que se haya ejecutado el job correctamente observando los logs del job.
+- **Paso 40.** Finalmente, verifica que se haya ejecutado el job correctamente, observando los logs del job.
 
   ```bash
   POD=$(kubectl get pods --selector=job-name=job-smoke-health -o jsonpath='{.items[0].metadata.name}')
@@ -732,7 +732,7 @@ Modificar el ConfigMap y forzar un **rolling restart** del Deployment para que l
 
 - **Paso 46.** Edita el archivo `k8s/configmap.yaml` y sustituye el siguiente código.
 
-  > **Nota.** Sustituye todo el bloque de la **línea 8 a la línea 10** cuida mucho la identación, YAML es muy sensible a los espacios.
+  > **Nota.** Sustituye todo el bloque de la **línea 8 a la línea 10**. Cuida mucho la identación, YAML es muy sensible a los espacios.
   {: .lab-note .info .compact}
 
   ```yaml
@@ -766,13 +766,13 @@ Modificar el ConfigMap y forzar un **rolling restart** del Deployment para que l
 - **Paso 49.** Actualiza la URL en el navegador Google Chrome o abre la URL localhost con el puerto dinámico y pruébala.
 
   > **Nota.**
-  - Existosamente, obtienes el ConfigMap con las etiquetas.
+  - Exitosamente, obtienes el ConfigMap con las etiquetas.
   - Ahora, observa que viene el cambio **V2** y **false**.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/22.png)
 
-- **Paso 50.** En la terminal que ocupa el proceso **Minikube service** ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 50.** En la terminal que ocupa el proceso **Minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[8] }}{% endcapture %}
