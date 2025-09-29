@@ -13,13 +13,13 @@ prerequisites:
   - Terminal **Git Bash** dentro de VS Code
   - Conocimientos básicos de Node.js, Docker y Kubernetes
 introduction:
- Un **Ingress** expone servicios HTTP/HTTPS externamente y permite **enrutamiento L7** (por host y/o por path). En Minikube, puedes usar `minikube addons enable ingress` para desplegar **NGINX Ingress Controller**. En esta práctica, publicarás **dos apps Node.js** detrás de **un solo Ingress**. todas las peticiones a `/app1` irán al **Service app1**, y las de `/app2` al **Service app2**. Así verás cómo consolidar múltiples servicios bajo un único punto de entrada.
+ Un **Ingress** expone servicios HTTP/HTTPS externamente y permite **enrutamiento L7** (por host y/o por path). En Minikube, puedes usar `minikube addons enable ingress` para desplegar **NGINX Ingress Controller**. En esta práctica, publicarás **dos apps Node.js** detrás de **un solo Ingress**. todas las peticiones a `/app1` irán al **Service app1** y las de `/app2` al **Service app2**. Así verás cómo consolidar múltiples servicios bajo un único punto de entrada.
 slug: lab12
 lab_number: 12
 final_result: >
-  Publicaste **dos servicios** detrás de **un único Ingress** usando **NGINX Ingress Controller** en Minikube, con **enrutamiento por rutas**. Aprendiste a construir imágenes locales, desplegar Deployments/Services, habilitar el controlador, definir reglas de Ingress, probar acceso por **navegador**, y realizar **rolling updates** sin afectar a otros backends.
+  Publicaste **dos servicios** detrás de **un único Ingress** usando **NGINX Ingress Controller** en Minikube, con **enrutamiento por rutas**. Aprendiste a construir imágenes locales, desplegar Deployments/Services, habilitar el controlador, definir reglas de Ingress, probar acceso por **navegador** y realizar **rolling updates** sin afectar a otros backends.
 notes: 
-  - Si el Ingress no responde, verifica que los Pods en `ingress-nginx` estén `Running` y revisa `kubectl describe ingress` para errores de reglas.  
+  - Si el Ingress no responde, verifica que los pods en `ingress-nginx` estén `Running` y revisa `kubectl describe ingress` para errores de reglas.  
   - Puedes usar **cert-manager** para TLS en prácticas futuras.  
   - Si tu entorno **no** usa Minikube, instala NGINX Ingress Controller con Helm o manifiestos oficiales del proyecto.  
   - Asegúrate de que tus **selectors** de Service coinciden exactamente con las **labels** del Deployment.
@@ -41,7 +41,7 @@ next: /capitulo1/lab1/
 
 ---
 
-### Tarea 1: Estructura del proyecto
+### Tarea 1. Estructura del proyecto
 
 Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes y el recurso Ingress.
 
@@ -51,7 +51,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
 
 - **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/23.png)
 
@@ -59,7 +59,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
 
   ![micint]({{ page.images_base | relative_url }}/24.png)
 
-- **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**:
 
   > **NOTA:** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
@@ -75,7 +75,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   mkdir lab12-k8singress && cd lab12-k8singress
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio:
 
   > **NOTA:** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
@@ -106,7 +106,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   └── .dockerignore
   ```
 
-- **Paso 9.** Ahora crea la carpeta **app1/** y sus archivos vacios.
+- **Paso 9.** Ahora, crea la carpeta **app1/** y sus archivos vacíos.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab12-k8singress**
   {: .lab-note .info .compact}
@@ -115,7 +115,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   mkdir -p app1 && touch app1/package.json app1/server.js
   ```
 
-- **Paso 10.** Ahora crea la carpeta **app2/** y sus archivos vacios.
+- **Paso 10.** Ahora, crea la carpeta **app2/** y sus archivos vacíos.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab12-k8singress**
   {: .lab-note .info .compact}
@@ -124,7 +124,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   mkdir -p app2 && touch app2/package.json app2/server.js
   ```
 
-- **Paso 11.** Muy bien continua la creación del directorio **k8s/** con los manifiestos vacios.
+- **Paso 11.** Muy bien. Continúa la creación del directorio **k8s/** con los manifiestos vacíos.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab12-k8singress**
   {: .lab-note .info .compact}
@@ -133,7 +133,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   mkdir -p k8s && touch k8s/app1-deployment.yaml k8s/app1-service.yaml k8s/app2-deployment.yaml k8s/app2-service.yaml k8s/ingress.yaml
   ```
 
-- **Paso 12.** Crea los ultimos archivos del proyecto.
+- **Paso 12.** Crea los últimos archivos del proyecto.
 
   > **NOTA:** El comando se ejecuta desde la raíz de la carpeta **lab12-k8singress**
   {: .lab-note .info .compact}
@@ -161,9 +161,9 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
   .DS_Store
   ```
 
-- **Paso 14.** Valida la creacion de la estructura de tu proyecto, escribe el siguiente comando.
+- **Paso 14.** Valida la creación de la estructura de tu proyecto. Escribe el siguiente comando.
 
-  > **NOTA:** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VSCode.
+  > **NOTA:** Recuerda que también puedes visualizarlos en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -178,9 +178,9 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
 
 ---
 
-### Tarea 2: Implementar app1 y app2 (Node.js)
+### Tarea 2. Implementar app1 y app2 (Node.js)
 
-Crearás dos APIs muy simples con rutas `/` (mensaje) y `/health` (probes). Se distinguirán por el contenido.
+Crearás dos API muy simples con rutas `/` (mensaje) y `/health` (probes). Se distinguirán por el contenido.
 
 #### Tarea 2.1 (app1)
 
@@ -196,7 +196,7 @@ Crearás dos APIs muy simples con rutas `/` (mensaje) y `/health` (probes). Se d
   }
   ```
 
-- **Paso 16.** Ahora abre `app1/server.js` y agrega la logica de la API:
+- **Paso 16.** Ahora, abre `app1/server.js` y agrega la lógica de la API:
 
   > **NOTA:** 
   - **Servidor Express** en puerto configurable (`PORT` o 3000).  
@@ -228,11 +228,11 @@ Crearás dos APIs muy simples con rutas `/` (mensaje) y `/health` (probes). Se d
   }
   ```
 
-- **Paso 18.** Ahora abre `app2/server.js` y agrega la logica de la API:
+- **Paso 18.** Ahora, abre `app2/server.js` y agrega la lógica de la API.
 
   > **NOTA:** 
   - **Servidor Express** en puerto configurable (`PORT` o 3000).  
-  - **Ruta `/`**: responde con el texto `"Hasta el infinito y mas alla desde APP2"`.  
+  - **Ruta `/`**: responde con el texto `"Hasta el infinito y más allá desde app2"`.  
   - **Ruta `/health`**: devuelve JSON con estado de la app (`{ status: "ok", app: "app2" }`).  
   - **Inicio del servidor**: imprime en consola `APP2 en puerto ...`.  
   {: .lab-note .info .compact}
@@ -241,7 +241,7 @@ Crearás dos APIs muy simples con rutas `/` (mensaje) y `/health` (probes). Se d
   const express = require('express');
   const app = express();
   const PORT = process.env.PORT || 3000;
-  app.get('/', (_req, res) => res.send('Hasta el infinito y mas alla desde APP2'));
+  app.get('/', (_req, res) => res.send('Hasta el infinito y más allá desde APP2'));
   app.get('/health', (_req, res) => res.json({ status: 'ok', app: 'app2' }));
   app.listen(PORT, () => console.log(`APP2 en puerto ${PORT}`));
   ```
@@ -252,7 +252,7 @@ Crearás dos APIs muy simples con rutas `/` (mensaje) y `/health` (probes). Se d
 
 ---
 
-### Tarea 3: Dockerfiles y build de imágenes en Minikube
+### Tarea 3. Dockerfiles y build de imágenes en Minikube
 
 Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube**, evitando publicarlas.
 
@@ -281,7 +281,7 @@ Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube
   EXPOSE 3000
   CMD ["node", "server.js"]
   ```
-- **Paso 21.** Recuerda encender siempre **minikube**, escribe el siguiente comando.
+- **Paso 21.** Recuerda encender siempre **minikube**. Escribe el siguiente comando.
 
   > **NOTA:** Espera unos segundos en lo que termina de inicializar.
   {: .lab-note .info .compact}
@@ -318,7 +318,7 @@ Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-- **Paso 24.** Verifica que se hayan creado correctamente las imagenes, escribe el siguiente comando.
+- **Paso 24.** Verifica que se hayan creado correctamente las imágenes. Escribe el siguiente comando.
 
   > **NOTA:** Debes ver `app1-demo:1.0` y `app2-demo:1.0` en la lista.
   {: .lab-note .info .compact}
@@ -335,13 +335,13 @@ Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube
 
 ---
 
-### Tarea 4: Deployment y Service (ClusterIP) para cada app
+### Tarea 4. Deployment y Service (ClusterIP) para cada app
 
 Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. El Ingress los referenciará por nombre y puerto.
 
 #### Tarea 4.1 (app1)
 
-- **Paso 25.** Dentro del archivo `k8s/app1-deployment.yaml` agrega el siguiente codigo:
+- **Paso 25.** Dentro del archivo `k8s/app1-deployment.yaml` agrega el siguiente código:
 
   ```yaml
   apiVersion: apps/v1
@@ -373,7 +373,7 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
             periodSeconds: 5
   ```
 
-- **Paso 26.** Ahora en el archivo `k8s/app1-service.yaml` define la exposicion de la aplicación:
+- **Paso 26.** Ahora, en el archivo `k8s/app1-service.yaml` define la exposición de la aplicación:
 
   ```yaml
   apiVersion: v1
@@ -391,7 +391,7 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
 
 #### Tarea 4.2 (app2)
 
-- **Paso 27.** En el archivo `k8s/app2-deployment.yaml` carga el codigo para desplegar los pods mediante el deployment:
+- **Paso 27.** En el archivo `k8s/app2-deployment.yaml` carga el código para desplegar los pods mediante el deployment:
 
   ```yaml
   apiVersion: apps/v1
@@ -423,7 +423,7 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
             periodSeconds: 5
   ```
 
-- **Paso 28.** Dentro del archivo `k8s/app2-service.yaml` agrega el codigo para el service:
+- **Paso 28.** Dentro del archivo `k8s/app2-service.yaml` agrega el código para el service:
 
   ```yaml
   apiVersion: v1
@@ -439,9 +439,9 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
         targetPort: 3000
   ```
 
-- **Paso 29.** Ahora aplica todos los objetos juntos **deployments** y **service**.
+- **Paso 29.** Ahora, aplica todos los objetos juntos **deployments** y **service**.
 
-  > **NOTA:** Los **selectors** (`app: app1` / `app: app2`) conectan Services con sus Pods. El Ingress enviará tráfico a `app1-svc:80` y `app2-svc:80`.
+  > **NOTA:** Los **selectors** (`app: app1` / `app: app2`) conectan Services con sus pods. El Ingress enviará tráfico a `app1-svc:80` y `app2-svc:80`.
   {: .lab-note .info .compact}
 
   ```bash
@@ -451,7 +451,7 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
 
   ![micint]({{ page.images_base | relative_url }}/7.png)
 
-- **Paso 30.** Ahora valida que todo se haya creado correctamente.
+- **Paso 30.** Ahora, valida que todo se haya creado correctamente.
 
   ```bash
   kubectl get deploy,po,svc
@@ -465,15 +465,15 @@ Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app
 
 ---
 
-### Tarea 5: Habilitar NGINX Ingress Controller (Minikube)
+### Tarea 5. Habilitar NGINX Ingress Controller (Minikube)
 
 Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** en el namespace `ingress-nginx`.
 
 #### Tarea 5.1
 
-- **Paso 31.** Habilitar addon e inspeccionar Pods del controlador:
+- **Paso 31.** Habilitar addon e inspeccionar pods del controlador:
 
-  > **NOTA:** Debes esperar a que los Pods del controlador estén **Running** antes de crear el Ingress.
+  > **NOTA:** Debes esperar a que los pods del controlador estén **Running** antes de crear el Ingress.
   {: .lab-note .info .compact}
 
   ```bash
@@ -482,11 +482,11 @@ Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** 
 
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
-- **Paso 32.** Ya que haya terminado de instalar el **addon** de ingrees, verifica que este listo para usarse.
+- **Paso 32.** Ya que haya terminado de instalarse el **addon** de ingrees, verifica que esté listo para usarse.
 
   > **NOTA:**
   - Es normal ver los `ingress-nginx-admission...` 0/1, son Jobs de una sola vez que generan/parchean los certificados del admission webhook.
-  - Lo importante es que el controller esté **Running 1/1**
+  - Lo importante es que el controller esté **Running 1/1**.
   {: .lab-note .info .compact}
 
   ```bash
@@ -495,7 +495,7 @@ Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** 
 
   ![micint]({{ page.images_base | relative_url }}/10.png)
 
-- **Paso 33.** Ahora obten la IP del nodo:
+- **Paso 33.** Ahora, obtén la IP del nodo.
 
   > **NOTA:**
   - Usarás esta IP para probar el Ingress.
@@ -513,13 +513,13 @@ Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** 
 
 ---
 
-### Tarea 6: Crear el recurso Ingress con rutas `/app1` y `/app2`
+### Tarea 6. Crear el recurso Ingress con rutas `/app1` y `/app2`
 
 Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente, asignarás un **host** de pruebas (`demo.local`).
 
 #### Tarea 6.1
 
-- **Paso 34.** Bien! ahora abre el archivo `k8s/ingress.yaml` y agrega el siguiente contenido.
+- **Paso 34.** ¡Bien! Ahora abre el archivo `k8s/ingress.yaml` y agrega el siguiente contenido.
 
   > **NOTA:** La anotación `rewrite-target: /` reescribe `/app1` a `/` en el backend (igual para `/app2`).
   {: .lab-note .info .compact}
@@ -559,7 +559,7 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
   kubectl apply -f k8s/ingress.yaml
   ```
 
-- **Paso 36.** Obten los valores de la configuración para saber si esta correctamente implementado
+- **Paso 36.** Obtén los valores de la configuración para saber si está correctamente implementado
 
   ```bash
   kubectl get ingress
@@ -583,7 +583,7 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
 
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-- **Paso 39.** Ahora abre otra terminal de **GitBash** para probar las rutas usando las siguientes URLs, ejecuta los 2 comandos al mismo tiempo en la terminal:
+- **Paso 39.** Ahora, abre otra terminal de **GitBash** para probar las rutas usando las siguientes URL, ejecuta los 2 comandos al mismo tiempo en la terminal:
 
   ```bash
   curl -s -H "Host: demo.local" http://127.0.0.1:8080/app1
@@ -595,13 +595,13 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
 
   ![micint]({{ page.images_base | relative_url }}/14.png)
 
-- **Paso 40.** Agregar una entrada local al archivo HOST del Sistema Operativo para usar navegador sin la necesidad de llamar Host header manual (CLI), escribe el siguiente comando:
+- **Paso 40.** Agregar una entrada local al archivo HOST del Sistema Operativo para usar navegador sin la necesidad de llamar Host header manual (CLI). Escribe el siguiente comando:
 
   > **NOTA:**
   - `C:\Windows\System32\drivers\etc\hosts` (Windows) y agrega una línea para definir el host personalizado:
   {: .lab-note .info .compact}
 
-  > **IMPORTANTE:** Recuerda estar en la segunda terminal
+  > **Importante.** Recuerda estar en la segunda terminal
   {: .lab-note .important .compact}
 
   ```
@@ -622,7 +622,7 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-  - **Hasta el infinito y mas alla desde APP2**
+  - **Hasta el infinito y más allá desde app2**
 
   ```bash
   http://demo.local:8080/app2
@@ -636,13 +636,13 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
 
 ---
 
-### Tarea 7: Actualización de una app y verificación de enrutamiento
+### Tarea 7. Actualización de una app y verificación de enrutamiento
 
 Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un **rolling update** sin afectar `app2`.
 
 #### Tarea 7.1
 
-- **Paso 42.** Edita `app1/server.js` para cambiar el mensaje, solo ajusta el texto de la **linea 4** por el que esta abajo:
+- **Paso 42.** Edita `app1/server.js` para cambiar el mensaje, solo ajusta el texto de la **línea 4** por el que está abajo.
 
   > **NOTA:** Recuerda que seguimos en la segunda terminal GitBash que abriste.
   {: .lab-note .info .compact}
@@ -677,7 +677,7 @@ Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un *
 
 - **Paso 45.** Prueba las rutas nuevamente.
 
-  > **NOTA:** Si dejaste abiertas las paginas en el navegador solo actualizalas
+  > **NOTA:** Si dejaste abiertas las páginas en el navegador, solo actualízalas.
   {: .lab-note .info .compact}
 
   - **Un mago(APP1) nunca llega tarde, ni pronto, llega exactamente cuando se lo propone**
@@ -688,7 +688,7 @@ Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un *
 
   ![micint]({{ page.images_base | relative_url }}/20.png)
 
-  - **Hasta el infinito y mas alla desde APP2**
+  - **Hasta el infinito y más allá desde app2**
 
   ```bash
   http://demo.local:8080/app2
@@ -696,7 +696,7 @@ Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un *
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-- **Paso 46.** Regresa a la teminal que ocupa el proceso **minikube ingress** ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 46.** Regresa a la terminal que ocupa el proceso **minikube ingress** ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[6] }}{% endcapture %}
@@ -704,7 +704,7 @@ Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un *
 
 ---
 
-### Tarea 8: Limpieza
+### Tarea 8. Limpieza
 
 Dejarás el clúster sin objetos del laboratorio.
 
