@@ -237,7 +237,7 @@ Definir el script SQL que crea la BD `agenda`, una tabla y carga datos de ejempl
 
 #### Tarea 3.1
 
-- **Paso 13.** Abre el archivo `db/init.sql` y define la siguiente estrucutra de SQL para la BD.
+- **Paso 13.** Abre el archivo `db/init.sql` y define la siguiente estructura de SQL para la BD.
 
   > **Notas**
   - **CREATE DATABASE agenda**: crea la base de datos llamada `agenda`.  
@@ -475,7 +475,7 @@ Ejecutar el stack con Compose y valida los endpoints.
 
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
-- **Paso 22.** Muy bien. Ahora valida que la aplicación funcione bien y devuelva los usuarios.
+- **Paso 22.** Muy bien. Ahora, valida que la aplicación funcione bien y devuelva los usuarios.
 
   ```bash
   curl -s http://localhost:${API_PORT}/usuarios
@@ -547,7 +547,7 @@ Detener y eliminar recursos creados.
 
 - **Paso 27.** Así, también es fácil detener todo recurso y realizar la limpieza.
 
-  > **Nota.** Docker compose se hace cargo de la orquestación de todos los componentes.
+  > **Nota.** Docker Compose se hace cargo de la orquestación de todos los componentes.
   {: .lab-note .info .compact}
 
   ```bash
