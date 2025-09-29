@@ -12,7 +12,7 @@ prerequisites:
   - Git Bash configurado como terminal por defecto en VS Code
   - Conocimientos básicos de Node.js, HTML y Docker
 introduction:
-  - Por defecto, los contenedores Docker son **efímeros**, si se eliminan, sus datos se pierden. Para separar el ciclo de vida de la **app** y de los **datos**, Docker ofrece **volúmenes** (administrados por Docker) y **bind mounts** (montajes de carpetas del host). En esta práctica, integrarás **SQLite** y probarás ambos enfoques, **named volume** para persistencia y **bind mount** para desarrollo con cambios en caliente.
+  - Por defecto, los contenedores Docker son **efímeros**; si se eliminan, sus datos se pierden. Para separar el ciclo de vida de la **app** y de los **datos**, Docker ofrece **volúmenes** (administrados por Docker) y **bind mounts** (montajes de carpetas del host). En esta práctica, integrarás **SQLite** y probarás ambos enfoques, **named volume** para persistencia y **bind mount** para desarrollo con cambios en caliente.
 slug: lab4
 lab_number: 4
 final_result: >
@@ -52,15 +52,15 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
 
 - **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode**, da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code**, da clic en el icono de la imagen para abrir la terminal; se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/20.png)
 
-- **Paso 4.** Usa la terminal de **`Git Bash`**, da clic como lo muestra la imagen.
+- **Paso 4.** Usa la terminal de **`Git Bash`**. Da clic como lo muestra la imagen.
 
   ![micint]({{ page.images_base | relative_url }}/21.png)
 
-- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**.
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa `cd ..` para retornar a la raíz de laboratorios.
   {: .lab-note .info .compact}
@@ -76,7 +76,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
   mkdir lab4-dockervolumes && cd lab4-dockervolumes
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio.
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio.
 
   > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. Git Bash brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
@@ -151,7 +151,7 @@ Crear la carpeta base y la estructura mínima del proyecto para mapear correctam
 
 - **Paso 13.** Valida la creación de tu estructura de proyecto y escribe el siguiente comando.
 
-  > **Nota.** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VSCode.
+  > **Nota.** Recuerda que también puedes visualizarlos en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   > **Importante.** Debes ver `backend/`, `frontend/`, `data/`, `Dockerfile` y `.dockerignore`.
@@ -201,7 +201,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
   - **Express + SQLite3** para gestionar contactos con persistencia.  
   - **Tabla `contactos`** creada automáticamente si no existe.  
   - **Endpoints principales**:  
-    - `/health` → verifica estado de la app y la base de datos.  
+    - `/health` → verifica el estado de la app y la base de datos.  
     - `/api/contactos` → lista y crea contactos.  
     - `/api/contactos/:id` → elimina por ID.  
   - **Archivos estáticos** servidos desde `frontend`.  
@@ -296,7 +296,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
 
   ![micint]({{ page.images_base | relative_url }}/4.png)
 
-- **Paso 17.** Abre otra terminal **GitBash** dentro de VSCode y ejecuta los siguientes comandos para la prueba local.
+- **Paso 17.** Abre otra terminal **GitBash** dentro de VS Code y ejecuta los siguientes comandos para la prueba local.
 
   > **Nota**
     - `curl /health` debe responder. `{"status":"ok","db":"up",...}`
@@ -313,7 +313,7 @@ Implementar API REST con SQLite, inicialización de esquema y endpoint `/health`
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-- **Paso 18.** Regresa a la terminal donde está ocupando el proceso **node server.js** y deténlo con `CTRL + c`.
+- **Paso 18.** Regresa a la terminal donde está ocupando el proceso **node server.js** y detenlo con `CTRL + c`.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[1] }}{% endcapture %}
@@ -412,7 +412,7 @@ Implementar una interfaz simple con **alta** y **eliminación** de contactos, co
   </html>
   ```
 
-- **Paso 20.** En la terminal dentro del directorio **backend**, escribe el siguiente comando para inicializar la app localmente.
+- **Paso 20.** En la terminal, dentro del directorio **backend**, escribe el siguiente comando para inicializar la app localmente.
 
   ```bash
   node server.js
@@ -595,7 +595,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-- **Paso 34.** Abre la URL de la aplicación e inserta contactos desde la interfaz grafica en el navegador **Google Chrome**.
+- **Paso 34.** Abre la URL de la aplicación e inserta contactos desde la interfaz gráfica en el navegador **Google Chrome**.
 
   ```bash
   http://localhost:3000
@@ -603,7 +603,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/14.png)
 
-- **Paso 35.** Regresa a la terminal de VSCode. Prueba el registro de un contacto desde la CLI. Escribe el siguiente comando.
+- **Paso 35.** Regresa a la terminal de VS Code. Prueba el registro de un contacto desde la CLI. Escribe el siguiente comando.
 
   > **Nota.** Si es necesario, registra más contactos para que tenga más información.
   {: .lab-note .info .compact}
@@ -618,7 +618,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
 - **Paso 36.** Elimina el contenedor activo y recréalo de nuevo. Ejecuta los siguientes comandos.
 
-  > **Nota.** Los datos siguen en el volumen aunque el contenedor fue recreado.
+  > **Nota.** Los datos siguen en el volumen, aunque el contenedor fue recreado.
   {: .lab-note .info .compact}
 
   ```bash
