@@ -326,7 +326,7 @@ Aprender a controlar el ciclo de vida de los contenedores.
 
 ## Tarea 6. Manejo de imágenes Docker
 
-En esta tarea listarás, buscarás, descargarás y eliminarás imágenes Docker para gestionar eficientemente el repositorio local.
+Listar, buscar, descargar y eliminar imágenes Docker para gestionar eficientemente el repositorio local.
 
 ### Tarea 6.1
 
