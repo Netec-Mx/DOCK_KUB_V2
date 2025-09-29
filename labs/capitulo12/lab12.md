@@ -254,7 +254,7 @@ Crear dos API muy simples con rutas `/` (mensaje) y `/health` (probes). Se disti
 
 ### Tarea 3. Dockerfiles y build de imágenes en Minikube
 
-Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube**, evitando publicarlas.
+Compilar dos imágenes (una por app) usando el **daemon de Docker de Minikube**, evitando publicarlas.
 
 #### Tarea 3.1
 
@@ -337,7 +337,7 @@ Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube
 
 ### Tarea 4. Deployment y Service (ClusterIP) para cada app
 
-Crear un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. El Ingress los referenciará por nombre y puerto.
+Crear un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. El Ingress los referencia por nombre y puerto.
 
 #### Tarea 4.1. (app1)
 
@@ -467,7 +467,7 @@ Crear un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. E
 
 ### Tarea 5. Habilitar NGINX Ingress Controller (Minikube)
 
-Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** en el namespace `ingress-nginx`.
+Activar el **addon** de Minikube que instala el **NGINX Ingress Controller** en el namespace `ingress-nginx`.
 
 #### Tarea 5.1
 
@@ -515,7 +515,7 @@ Activarás el **addon** de Minikube que instala el **NGINX Ingress Controller** 
 
 ### Tarea 6. Crear el recurso Ingress con rutas `/app1` y `/app2`
 
-Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente, asignarás un **host** de pruebas (`demo.local`).
+Definir un **Ingress** que enrute por **path** a los Services. Opcionalmente, asignar un **host** de pruebas (`demo.local`).
 
 #### Tarea 6.1
 
@@ -638,7 +638,7 @@ Definirás un **Ingress** que enrute por **path** a los Services. Opcionalmente,
 
 ### Tarea 7. Actualización de una app y verificación de enrutamiento
 
-Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un **rolling update** sin afectar `app2`.
+Hacer un pequeño cambio en `app1`, reconstruir la imagen y observar un **rolling update** sin afectar `app2`.
 
 #### Tarea 7.1
 
@@ -706,7 +706,7 @@ Harás un pequeño cambio en `app1`, reconstruirás la imagen y observarás un *
 
 ### Tarea 8. Limpieza
 
-Dejarás el clúster sin objetos del laboratorio.
+Dejar el clúster sin objetos del laboratorio.
 
 #### Tarea 8.1
 
@@ -724,7 +724,7 @@ Dejarás el clúster sin objetos del laboratorio.
 
   ![micint]({{ page.images_base | relative_url }}/21.png)
 
-- **Paso 48.** Deshabilitar addon de ingress.
+- **Paso 48.** Deshabilita addon de ingress.
 
   ```bash
   minikube addons disable ingress
