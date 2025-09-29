@@ -5,7 +5,7 @@ permalink: /capitulo11/lab11/
 images_base: /labs/capitulo11/img
 duration: "60 minutos"
 objective:
-  - Que domines cómo **exponer servicios solo dentro del clúster** usando **Service tipo ClusterIP** y cómo **resolverlos vía DNS interno**. Desplegarás una **API Node.js** y probarás su acceso desde **Pods clientes** usando el nombre DNS del Service (formas corta y FQDN), además de validar que **no es accesible externamente**. Todo con pasos detallados para que puedas seguirlos tal cual en tu entorno.
+  - Que domines cómo **exponer servicios solo dentro del clúster** usando **Service tipo ClusterIP** y cómo **resolverlos vía DNS interno**. Desplegarás una **API Node.js** y probarás su acceso desde **pods clientes** usando el nombre DNS del Service (formas corta y FQDN), además de validar que **no es accesible externamente**. Todo con pasos detallados para que puedas seguirlos tal cual en tu entorno.
 prerequisites:
   - Visual Studio Code
   - Docker Desktop en ejecución
@@ -13,7 +13,7 @@ prerequisites:
   - Terminal **Git Bash** dentro de VS Code
   - Conocimientos básicos de Node.js, Docker y Kubernetes
 introduction:
-  Un **Service** en Kubernetes agrupa Pods y les da una identidad **estable** (IP + DNS) aunque los Pods cambien. El tipo **ClusterIP** (por defecto) solo es accesible **dentro** del clúster. Kubernetes crea un **registro DNS** para cada Service. puedes consumirlo usando el **nombre corto** (mismo namespace) o el **FQDN** (`<service>.<namespace>.svc.cluster.local`). En esta práctica te enfocarás en ese **DNS interno** y la **comunicación inter-Pods**.
+  Un **Service** en Kubernetes agrupa pods y les da una identidad **estable** (IP + DNS) aunque los pods cambien. El tipo **ClusterIP** (por defecto) solo es accesible **dentro** del clúster. Kubernetes crea un **registro DNS** para cada Service. puedes consumirlo usando el **nombre corto** (mismo namespace) o el **FQDN** (`<service>.<namespace>.svc.cluster.local`). En esta práctica te enfocarás en ese **DNS interno** y la **comunicación inter-pods**.
 slug: lab11
 lab_number: 11
 final_result: >
@@ -35,7 +35,7 @@ next: /capitulo12/lab12/
 
 ---
 
-### Tarea 1: Preparar la estructura del proyecto
+### Tarea 1. Preparar la estructura del proyecto
 
 Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/`) y manifiestos (`k8s/`) para trabajar ordenado.
 
@@ -45,7 +45,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 - **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VSCode** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/25.png)
 
@@ -53,7 +53,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
   ![micint]({{ page.images_base | relative_url }}/26.png)
 
-- **Paso 5.** Asegurate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**:
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**:
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
@@ -69,7 +69,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
   mkdir lab11-k8sclusteripdns && cd lab11-k8sclusteripdns
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VSCode que se haya creado el directorio:
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio:
 
   > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
@@ -90,7 +90,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
   └── .dockerignore
   ```
 
-- **Paso 9.** Ahora crea la carpeta **app/** y sus archivos vacios.
+- **Paso 9.** Ahora, crea la carpeta **app/** y sus archivos vacíos.
 
   > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
@@ -99,7 +99,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
   mkdir -p app && touch app/package.json app/server.js
   ```
 
-- **Paso 10.** Muy bien continua la creación del directorio **k8s/** con los manifiestos vacios.
+- **Paso 10.** Muy bien. Continúa la creación del directorio **k8s/** con los manifiestos vacíos.
 
   > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
@@ -108,7 +108,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
   mkdir -p k8s && touch k8s/deployment.yaml k8s/service.yaml
   ```
 
-- **Paso 11.** Crea los ultimos dos archivos del proyecto **.dockerignore** y **Dockerfile**.
+- **Paso 11.** Crea los últimos dos archivos del proyecto **.dockerignore** y **Dockerfile**.
 
   > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab11-k8sclusteripdns**
   {: .lab-note .info .compact}
@@ -136,7 +136,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
   .DS_Store
   ```
 
-- **Paso 13.** Valida la creacion de la estructura de tu proyecto, escribe el siguiente comando.
+- **Paso 13.** Valida la creación de la estructura de tu proyecto. Escribe el siguiente comando.
 
   > **Nota.** También puedes validarlo en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
@@ -153,7 +153,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 ---
 
-### Tarea 2: Implementar una API Node.js muy simple
+### Tarea 2. Implementar una API Node.js muy simple
 
 Crearás una API con Express con `/hello` y `/health`. Será el backend que expondrás con ClusterIP.
 
@@ -171,9 +171,9 @@ Crearás una API con Express con `/hello` y `/health`. Será el backend que expo
   }
   ```
 
-- **Paso 15.** Copia y pega el siguiente codigo dentro del archivo `app/server.js`.
+- **Paso 15.** Copia y pega el siguiente código dentro del archivo `app/server.js`.
 
-  > **Nota.** La ruta `/health` la usarás como liveness/readiness; la ruta `/hello` será el objetivo de tus pruebas desde otros Pods.
+  > **Nota.** La ruta `/health` la usarás como liveness/readiness; la ruta `/hello` será el objetivo de tus pruebas desde otros pods.
   {: .lab-note .info .compact}
 
   ```javascript
@@ -196,7 +196,7 @@ Crearás una API con Express con `/hello` y `/health`. Será el backend que expo
 
 ---
 
-### Tarea 3: Crear la imagen Docker dentro de Minikube
+### Tarea 3. Crear la imagen Docker dentro de Minikube
 
 Construirás la imagen en el **daemon de Docker de Minikube** para usarla directamente desde el clúster sin subir a un registry externo.
 
@@ -214,7 +214,7 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
   CMD ["node", "server.js"]
   ```
 
-- **Paso 17.** Recuerda encender siempre **minikube**, escribe el siguiente comando.
+- **Paso 17.** Recuerda encender siempre **minikube**. Escribe el siguiente comando.
 
   > **Nota.** Espera unos segundos en lo que termina de inicializar.
   {: .lab-note .info .compact}
@@ -252,13 +252,13 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
 
 ---
 
-### Tarea 4: Desplegar Deployment y Service ClusterIP
+### Tarea 4. Desplegar Deployment y Service ClusterIP
  
 Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** para exponerlo **solo** dentro del clúster con DNS interno.
 
 #### Tarea 4.1
 
-- **Paso 20.** Abre el archivo `k8s/deployment.yaml` y agrega el siguiente codigo para el manifiesto.
+- **Paso 20.** Abre el archivo `k8s/deployment.yaml` y agrega el siguiente código para el manifiesto.
 
   ```yaml
   apiVersion: apps/v1
@@ -294,13 +294,13 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
             periodSeconds: 5
   ```
 
-- **Paso 21.** Ejecuta la configuración del archivo deployment, escribe el siguiente comando.
+- **Paso 21.** Ejecuta la configuración del archivo deployment. Escribe el siguiente comando.
 
    ```bash
    kubectl apply -f k8s/deployment.yaml
    ```
 
-- **Paso 22.** Verifica que el deployment y los pods esten corriendo correctamente.
+- **Paso 22.** Verifica que el deployment y los pods estén corriendo correctamente.
 
   > **Nota.** Deberias observar `Running` y `READY 1/1`
   {: .lab-note .info .compact}
@@ -327,13 +327,13 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
         targetPort: 3000 # Puerto del contenedor
   ```
 
-- **Paso 24.** Ejecuta la configuración del archivo service, escribe el siguiente comando.
+- **Paso 24.** Ejecuta la configuración del archivo service. Escribe el siguiente comando.
 
    ```bash
    kubectl apply -f k8s/service.yaml
    ```
    
-- **Paso 25.** Verifica que el service este corriendo correctamente.
+- **Paso 25.** Verifica que el service esté corriendo correctamente.
 
   > **Nota.** Debes ver Service tipo **ClusterIP** sin External-IP
   {: .lab-note .info .compact}
@@ -348,7 +348,7 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
 
   > **Nota.**
   - Anota el valor de **ClusterIP** y que el puerto 80 se traducira a **3000 (TARGET PORT)**
-  - Con **2 réplicas**, el Service balanceará tráfico entre Pods relacionados por la etiqueta `app: clusterip-app`.
+  - Con **2 réplicas**, el Service balanceará tráfico entre pods relacionados por la etiqueta `app: clusterip-app`.
   - El DNS interno te permitirá llamarlo por nombre.
   {: .lab-note .info .compact}
 
@@ -364,13 +364,13 @@ Crearás el **Deployment** (2 réplicas) y el **Service** de tipo **ClusterIP** 
 
 ---
 
-### Tarea 5: Probar acceso interno por DNS (mismo namespace)
+### Tarea 5. Probar acceso interno por DNS (mismo namespace)
 
-Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del Service**. Validarás **nombre corto** y **FQDN**.
+Lanzarás pods **cliente** para consumir la API a través del **nombre DNS del Service**. Validarás **nombre corto** y **FQDN**.
 
 #### Tarea 5.1
 
-- **Paso 27.** Crea un Pod efímero para probar HTTP con `curl` (imagen liviana).
+- **Paso 27.** Crea un pod efímero para probar HTTP con `curl` (imagen liviana).
 
   ```bash
   kubectl run curl-client --rm -it --image=curlimages/curl:8.10.1 --restart=Never -- sh
@@ -378,11 +378,11 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
 
   ![micint]({{ page.images_base | relative_url }}/9.png)
 
-- **Paso 28.** Dentro del Pod, ejecuta los siguientes comandos:
+- **Paso 28.** Dentro del pod, ejecuta los siguientes comandos:
 
   > **Nota.**
   - Forma corta (mismo namespace):
-  - Si el Pod cliente está en el **mismo namespace** `default`, puede usar el **nombre corto**.
+  - Si el pod cliente está en el **mismo namespace** `default`, puede usar el **nombre corto**.
   {: .lab-note .info .compact}
 
   ```sh
@@ -409,14 +409,14 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
   exit
   ```
 
-- **Paso 29.** Ejecuta un Pod para pruebas de **DNS** con busybox.
+- **Paso 29.** Ejecuta un pod para pruebas de **DNS** con busybox.
 
   ```bash
   kubectl run dns-client --rm -it --image=busybox:1.36 --restart=Never -- sh
   ```
   ![micint]({{ page.images_base | relative_url }}/12.png)
 
-- **Paso 30.** Dentro del Pod, ejecuta los siguientes comandos:
+- **Paso 30.** Dentro del pod, ejecuta los siguientes comandos:
 
   > **NOTA:**
   - En el resultado la IP debe ser la misma que observaste en el detalle del service.
@@ -429,7 +429,7 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
 
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-  > **NOTA:** Con el siguiente comando la traducción es mas limpia.
+  > **NOTA:** Con el siguiente comando la traducción es más limpia.
   {: .lab-note .info .compact}
 
   ```sh
@@ -451,9 +451,9 @@ Lanzarás Pods **cliente** para consumir la API a través del **nombre DNS del S
 
 ---
 
-### Tarea 6: Probar acceso **desde otro namespace** (requiere FQDN)
+### Tarea 6. Probar acceso **desde otro namespace** (requiere FQDN)
 
-Crearás un **segundo namespace** y un Pod cliente allí. Verás que el **nombre corto** ya no funciona y que debes usar el **FQDN**.
+Crearás un **segundo namespace** y un pod cliente allí. Verás que el **nombre corto** ya no funciona y que debes usar el **FQDN**.
 
 #### Tarea 6.1
 
@@ -466,7 +466,7 @@ Crearás un **segundo namespace** y un Pod cliente allí. Verás que el **nombre
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
 
-- **Paso 32.** Lanza un Pod cliente en `pruebas-dns` y prueba las resoluciones.
+- **Paso 32.** Lanza un pod cliente en `pruebas-dns` y prueba las resoluciones.
 
   ```bash
   kubectl -n pruebas-dns run dns-cross --rm -it --image=busybox:1.36 --restart=Never -- sh
@@ -474,7 +474,7 @@ Crearás un **segundo namespace** y un Pod cliente allí. Verás que el **nombre
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-- **Paso 33.** Dentro del Pod, ejecuta el siguiente comando y observa el comportamiento:
+- **Paso 33.** Dentro del pod, ejecuta el siguiente comando y observa el comportamiento:
 
   > **NOTA:** Esto puede fallar porque el nombre corto busca en el namespace actual:
   {: .lab-note .info .compact}
@@ -500,7 +500,7 @@ Crearás un **segundo namespace** y un Pod cliente allí. Verás que el **nombre
   exit
   ```
 
-- **Paso 35.** Ahora prueba con HTTP y curl usando una imagen que soporta curl.
+- **Paso 35.** Ahora, prueba con HTTP y curl usando una imagen que soporta curl.
 
   > **NOTA:**
   - El pod se crea, resuelve y se elimina, pero debes ver el mensaje correctamente.
@@ -520,7 +520,7 @@ Crearás un **segundo namespace** y un Pod cliente allí. Verás que el **nombre
 
 ---
 
-### Tarea 7: Confirmar que **no** hay acceso externo (solo interno)
+### Tarea 7. Confirmar que **no** hay acceso externo (solo interno)
 
 Probarás desde tu **host** que el Service **ClusterIP** no es accesible. Verás que no aparece en `minikube service list` y que **no tiene External-IP**.
 
@@ -566,13 +566,13 @@ Probarás desde tu **host** que el Service **ClusterIP** no es accesible. Verás
 
 ---
 
-### Tarea 8: Limpieza de recursos
+### Tarea 8. Limpieza de recursos
 
 Eliminarás los objetos creados para dejar el clúster limpio.
 
 #### Tarea 8.1
 
-- **Paso 39.** Borra Pods efímeros (si alguno quedó) y namespace de pruebas.
+- **Paso 39.** Borra pods efímeros (si alguno quedó) y namespace de pruebas.
 
   > **NOTA:** Estos pods fueron eliminados por la etiqueta `--rm`, pero por si quedaron, eliminalos:
   {: .lab-note .info .compact}
@@ -585,7 +585,7 @@ Eliminarás los objetos creados para dejar el clúster limpio.
 
   ![micint]({{ page.images_base | relative_url }}/23.png)
 
-- **Paso 40.** Elimina Deployment y Service de la practica.
+- **Paso 40.** Elimina Deployment y Service de la práctica.
 
   > **NOTA:** Es buena práctica limpiar tus recursos para evitar confusiones y consumo innecesario.
   {: .lab-note .info .compact}
