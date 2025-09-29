@@ -37,7 +37,7 @@ next: /capitulo12/lab12/
 
 ### Tarea 1. Preparar la estructura del proyecto
 
-Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/`) y manifiestos (`k8s/`) para trabajar ordenado.
+Crear el esqueleto del proyecto y archivos base. Separar código (`app/`) y manifiestos (`k8s/`) para trabajar ordenado.
 
 #### Tarea 1.1
 
@@ -155,7 +155,7 @@ Vas a crear el esqueleto del proyecto y archivos base. Separarás código (`app/
 
 ### Tarea 2. Implementar una API Node.js muy simple
 
-Crearás una API con Express con `/hello` y `/health`. Será el backend que expondrás con ClusterIP.
+Crear una API con Express con `/hello` y `/health`. Será el backend que expondrás con ClusterIP.
 
 #### Tarea 2.1
 
@@ -198,7 +198,7 @@ Crearás una API con Express con `/hello` y `/health`. Será el backend que expo
 
 ### Tarea 3. Crear la imagen Docker dentro de Minikube
 
-Construirás la imagen en el **daemon de Docker de Minikube** para usarla directamente desde el clúster sin subir a un registry externo.
+Construir la imagen en el **daemon de Docker de Minikube** para usarla directamente desde el clúster sin subir a un registry externo.
 
 #### Tarea 3.1
 
@@ -254,7 +254,7 @@ Construirás la imagen en el **daemon de Docker de Minikube** para usarla direct
 
 ### Tarea 4. Desplegar Deployment y Service ClusterIP
  
-Crearás el **Deployment** (dos réplicas) y el **Service** de tipo **ClusterIP** para exponerlo **solo** dentro del clúster con DNS interno.
+Crear el **Deployment** (dos réplicas) y el **Service** de tipo **ClusterIP** para exponerlo **solo** dentro del clúster con DNS interno.
 
 #### Tarea 4.1
 
@@ -366,7 +366,7 @@ Crearás el **Deployment** (dos réplicas) y el **Service** de tipo **ClusterIP*
 
 ### Tarea 5. Probar acceso interno por DNS (mismo namespace)
 
-Lanzarás pods **cliente** para consumir la API a través del **nombre DNS del Service**. Validarás **nombre corto** y **FQDN**.
+Lanzar pods **cliente** para consumir la API a través del **nombre DNS del Service**. Validar **nombre corto** y **FQDN**.
 
 #### Tarea 5.1
 
@@ -453,7 +453,7 @@ Lanzarás pods **cliente** para consumir la API a través del **nombre DNS del S
 
 ### Tarea 6. Probar acceso **desde otro namespace** (requiere FQDN)
 
-Crearás un **segundo namespace** y un pod cliente allí. Verás que el **nombre corto** ya no funciona y que debes usar el **FQDN**.
+Crear un **segundo namespace** y un pod cliente allí. Ver que el **nombre corto** ya no funciona y usar el **FQDN**.
 
 #### Tarea 6.1
 
@@ -522,7 +522,7 @@ Crearás un **segundo namespace** y un pod cliente allí. Verás que el **nombre
 
 ### Tarea 7. Confirmar que **no** hay acceso externo (solo interno)
 
-Probarás desde tu **host** que el Service **ClusterIP** no es accesible. Verás que no aparece en `minikube service list` y que **no tiene External-IP**.
+Probar desde tu **host** que el Service **ClusterIP** no es accesible. Ver que no aparece en `minikube service list` y que **no tiene External-IP**.
 
 #### Tarea 7.1
 
@@ -568,7 +568,7 @@ Probarás desde tu **host** que el Service **ClusterIP** no es accesible. Verás
 
 ### Tarea 8. Limpieza de recursos
 
-Eliminarás los objetos creados para dejar el clúster limpio.
+Eliminar los objetos creados para dejar el clúster limpio.
 
 #### Tarea 8.1
 
