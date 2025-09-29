@@ -7,7 +7,7 @@ lab1:
 lab2:
   results:
     - "**Resultado esperado:** Carpeta creada y lista con archivo `README.md`."
-    - "**Resultado esperado:** Contenedor ejecutado correcamente con el mensaje `Hello from Docker!`."
+    - "**Resultado esperado:** Contenedor ejecutado correctamente con el mensaje `Hello from Docker!`."
     - "**Resultado esperado:** El contenedor corre Ubuntu y se detiene correctamente al salir."
     - "**Resultado esperado:** Estos comandos equivalen a 'monitorear' el estado de aplicaciones en un servidor real. Listado e inspección correcta de contenedores."
     - "**Resultado esperado:** La administración correcta de contenedores evita acumulación de procesos y libera recursos. El ciclo de vida completo de un contenedor gestionado exitosamente."
