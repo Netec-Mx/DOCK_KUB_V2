@@ -132,7 +132,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias.
 
-  > **Nota.** Evita copiar artefactos innecesarios hacia la imagen., manteniéndola ligera.
+  > **Nota.** Evita copiar artefactos innecesarios hacia la imagen, manteniéndola ligera.
   {: .lab-note .info .compact}
 
   ```gitignore
@@ -151,7 +151,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
 - **Paso 13.** Valida la creación de la estructura de tu proyecto. Escribe el siguiente comando.
 
-  > **Nota.** Recuerda que tambien puedes visualizarlos en el explorador de archivos de VS Code.
+  > **Nota.** Recuerda que también puedes visualizarlos en el explorador de archivos de VS Code.
   {: .lab-note .info .compact}
 
   ```bash
@@ -376,7 +376,7 @@ Empaquetar la app y construir la imagen dentro del demonio Docker de Minikube pa
 
 - **Paso 20.** Abre el archivo `Dockerfile` que está en la raíz y agrega el siguiente código.
 
-  > **Nota.** Imagen minimal basada en Alpine, suficiente para nuestra práctica.
+  > **Nota.** Imagen mínima basada en Alpine, suficiente para nuestra práctica.
   {: .lab-note .info .compact}
 
   ```dockerfile
@@ -433,7 +433,7 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
 
 #### Tarea 4.1
 
-- **Paso 23.** Abre el archivo `k8s/configmap.yaml` y agrega las siguiente etiqueta.
+- **Paso 23.** Abre el archivo `k8s/configmap.yaml` y agrega la siguiente etiqueta.
 
   ```yaml
   apiVersion: v1
@@ -444,7 +444,7 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
     APP_TITLE: "Dashboard de Clics en Tiempo Real"
   ```
 
-- **Paso 24.** Verifica que minikibe haya encendido bien. Escribe el siguiente comando.
+- **Paso 24.** Verifica que Minikube haya encendido bien. Escribe el siguiente comando.
 
   > **Nota.** Verifica que los nodos estén funcionando.
   {: .lab-note .info .compact}
@@ -455,12 +455,12 @@ El título de la UI se inyectará como variable de entorno `APP_TITLE` mediante 
 
   ![micint]({{ page.images_base | relative_url }}/10.png)
 
-- **Paso 25.** Ahora, aplica el manifiesto del archivo **configmap**.
+- **Paso 25.** Ahora, aplica el manifiesto del archivo **ConfigMap**.
 
   > **Notas**
   - El comando se ejecuta desde el directorio **lab7-k8snodeapp**.
   - Aplica y valida que se haya configurado correctamente.
-  - Separar configuración del código permite cambiar los títulos o slogans sin reconstruir la imagen.
+  - Separar la configuración del código permite cambiar los títulos o eslogans sin reconstruir la imagen.
   {: .lab-note .info .compact}
 
   ```bash
@@ -482,7 +482,7 @@ Crear un Deployment con **dos réplicas**, **liveness/readiness probes** y varia
 
 #### Tarea 5.1
 
-- **Paso 26.** Abre el archivo `k8s/deployment.yaml` y define la configuración que implementará los pods.
+- **Paso 26.** Abre el archivo `k8s/deployment.yaml` y define la configuración que implementarán los pods.
 
   ```yaml
   apiVersion: apps/v1
@@ -515,8 +515,8 @@ Crear un Deployment con **dos réplicas**, **liveness/readiness probes** y varia
 - **Paso 27.** Aplica el manifiesto y verifica que esté listo cuando los pods terminen de crearse.
 
   > **Notas**
-  - En caso de que tengas un error **ImagePullBackOff**, usa este comando para cargar la imagen a minikube `minikube image load k8s-node-ui:1.0`.
-  - Con dos réplicas, cada pod mantiene su propio contador en memoria. Esto evidencia el concepto de **stateful vs. stateless** y la necesidad de almacenes compartidos si quisieras un contador global.
+  - En caso de que tengas un error **ImagePullBackOff**, usa este comando para cargar la imagen a Minikube `minikube image load k8s-node-ui:1.0`.
+  - Con dos réplicas, cada pod mantiene su propio contador en memoria. Esto evidencia el concepto de **stateful vs. stateless** y la necesidad de almacenes compartidos, si quisieras un contador global.
   {: .lab-note .info .compact}
 
   ```bash
@@ -590,7 +590,7 @@ Crear un Service tipo **NodePort** que expone el puerto 3000 de los pods en el p
 - **Paso 31.** Ahora, el comando `minikube service node-ui-service --url` que se quedó activo en la terminal devolvió una **URL** parecida al siguiente comando.
 
   > **Notas**
-  - Cambia las letas **`x`** por el número de puerto que te asignó.
+  - Cambia las letras **`x`** por el número de puerto que te asignó.
   - Copia y pega la URL en tu navegador.
   - Da clics, es normal que tarde unos segundos en lo que los pods reciben la información.
   {: .lab-note .info .compact}
@@ -606,7 +606,7 @@ Crear un Service tipo **NodePort** que expone el puerto 3000 de los pods en el p
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-- **Paso 32.** Regresa a la terminal donde está el proceso de **minikbe service** y ejecuta **`CTRL + c`** para poder usar la terminal.
+- **Paso 32.** Regresa a la terminal donde está el proceso de **Minikube service** y ejecuta **`CTRL + c`** para poder usar la terminal.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[5] }}{% endcapture %}
