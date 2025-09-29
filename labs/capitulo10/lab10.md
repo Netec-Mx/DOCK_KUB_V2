@@ -13,7 +13,7 @@ prerequisites:
   - Terminal **Git Bash** dentro de VS Code
   - Conocimientos básicos de Node.js, Docker y Kubernetes
 introduction:
-  Un **PersistentVolume (PV)** representa almacenamiento físico (disco local o nube). Un **PersistentVolumeClaim (PVC)** es la **solicitud** de almacenamiento por parte de una app. Cuando montas un PVC en un pod, los datos sobreviven a reinicios, reprogramaciones y actualizaciones de imagen. Convertiremos la **agenda efímera** parecida a la de la Práctica 1 en una **agenda persistente**, más cercana a producción.
+  Un **PersistentVolume (PV)** representa almacenamiento físico (disco local o nube). Un **PersistentVolumeClaim (PVC)** es la **solicitud** de almacenamiento por parte de una app. Cuando montas un PVC en un pod, los datos sobreviven a reinicios, reprogramaciones y actualizaciones de imagen. Convertiremos la **agenda efímera**, parecida a la de la Práctica 1, en una **agenda persistente**, más cercana a producción.
 slug: lab10
 lab_number: 10
 final_result: >
@@ -864,7 +864,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
   > **Notas**
   - En la **línea 24** del archivo, agrega al final `-v1.1`.
-  - Quizás la línea pueda variar, si es así, identifícala.
+  - Quizás la línea pueda variar; si es así, identifícala.
   - Puedes apoyarte de la imagen. Asegúrate de no borrar nada más.
   {: .lab-note .info .compact}
 
@@ -879,7 +879,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 - **Paso 50.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí, ahora con el **nuevo diseño**.
 
   > **Notas**
-  - Recuerda abrir la URL que entrega **minikube service**.
+  - Recuerda abrir la URL que entrega **Minikube Service**.
   - Si todo salió bien, debes ver tus contactos.
   {: .lab-note .info .compact}
 
@@ -889,7 +889,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-- **Paso 51.** En la terminal que ocupa el proceso **minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 51.** En la terminal que ocupa el proceso **Minikube Service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[6] }}{% endcapture %}
