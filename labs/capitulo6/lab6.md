@@ -517,7 +517,7 @@ Ejecutar el stack con Compose y valida los endpoints.
 
 ### Tarea 8. Escalado mediante Compose
 
-En esta tarea, probarás la escalabilidad que ofrece **Docker Compose**.
+Probar la escalabilidad que ofrece **Docker Compose**.
 
 #### Tarea 8.1
 
