@@ -18,7 +18,7 @@ introduction:
 slug: lab8
 lab_number: 8
 final_result: >
-  Una app Node.js desplegada en **dos namespaces** con **buenas prácticas**: cuotas/limites, RBAC mínimo y manejo de imágenes desde **Docker Hub**. Validaste accesos por Service y configuraste ENV por entorno, demostrando **reutilización de manifiestos** y **aislamiento** efectivo.
+  Una app Node.js desplegada en **dos namespaces** con **buenas prácticas**: cuotas/límites, RBAC mínimo y manejo de imágenes desde **Docker Hub**. Validaste accesos por Service y configuraste ENV por entorno, demostrando **reutilización de manifiestos** y **aislamiento** efectivo.
 notes: 
   - Ajusta **ResourceQuota/LimitRange** a la capacidad real de tu clúster.
   - En producción, usa **Ingress + TLS** en lugar de NodePort.
@@ -48,7 +48,7 @@ next: /capitulo9/lab9/
 
 ### Tarea 1. Crear la estructura del proyecto
 
-Organizar carpetas y archivos para la app, manifestos de K8s y configuración por namespace.
+Organizar carpetas y archivos para la app, manifiestos de K8s y configuración por namespace.
 
 #### Tarea 1.1
 
@@ -56,7 +56,7 @@ Organizar carpetas y archivos para la app, manifestos de K8s y configuración po
 
 - **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal. Se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code**, da clic en el icono de la imagen para abrir la terminal. Se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/28.png)
 
@@ -260,10 +260,10 @@ Compilar, etiquetar y publicar la imagen para que Kubernetes pueda hacer **pull*
 
 #### Tarea 3.1
 
-- **Paso 17.** Estas son **dos opciones** para ingresa a tu cuenta de **Docker Hub** dependiendo de tu caso.
+- **Paso 17.** Estas son **dos opciones** para ingresar a tu cuenta de **Docker Hub** dependiendo de tu caso.
 
-  - Si ya tienes cuenda da clic <a href="https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Iniciar Sesión</strong></a>.
-  - Si no tienes cuenta da clic <a href="https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Crear cuenta</strong></a>.
+  - Si ya tienes cuenta, da clic <a href="https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Iniciar Sesión</strong></a>.
+  - Si no tienes cuenta, da clic <a href="https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw" target="_blank" rel="noopener noreferrer"><strong>AQUÍ - Crear cuenta</strong></a>.
 
 - **Paso 18.** Ya que estés autenticado en la cuenta de **Docker Hub**, da clic en **Repositories** del menú lateral izquierdo.
 
@@ -338,7 +338,7 @@ Compilar, etiquetar y publicar la imagen para que Kubernetes pueda hacer **pull*
 
   > **Notas**
   - Publicar en **Docker Hub** facilita la portabilidad del despliegue (cualquier clúster puede usarla).
-  - De igual manera puedes actualizar tu repositorio si dejaste abierta la página web.
+  - De igual manera, puedes actualizar tu repositorio si dejaste abierta la página web.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/12.png)
@@ -379,7 +379,7 @@ Crear **namespaces** `dev`, `prod` y aplicar **ResourceQuota**, **LimitRange** b
 
 - **Paso 31.** Ahora, levanta el servicio de **Minikube**, escribe el siguiente comando
 
-  > **Nota.** En caso de que ya este levantado no es necesario el comando.
+  > **Nota.** En caso de que ya esté levantado, no es necesario el comando.
   {: .lab-note .info .compact}
 
   ```bash
@@ -451,7 +451,7 @@ Crear **namespaces** `dev`, `prod` y aplicar **ResourceQuota**, **LimitRange** b
           memory: "128Mi"
   ```
 
-- **Paso 36.** Aplicar los manifistos para el namespace de **dev**.
+- **Paso 36.** Aplicar los manifiestos para el namespace de **dev**.
 
   ```bash
   kubectl apply -f k8s/policies/dev/resourcequota.yaml
