@@ -60,7 +60,7 @@ Crear una carpeta dedicada para esta práctica que servirá para organizar notas
 
 - **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VSCode**.
 
-  > **Nota.** Si te quedaste en el directorio de una práctica usa **`cd ..`** para retornar a la raíz de los laboratorios.
+  > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para retornar a la raíz de los laboratorios.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/1.png)
@@ -151,7 +151,7 @@ Aprender a correr un contenedor de Linux en modo interactivo.
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-- **Paso 13.** Dentro del contenedor ejecuta el siguiente comando:
+- **Paso 13.** Dentro del contenedor ejecuta el siguiente comando.
 
   - Debe mostrarse información de Ubuntu.
   - Al salir, el contenedor se detiene.
@@ -426,7 +426,7 @@ Crear un contenedor con nombre, revisar procesos y limpiar recursos para adminis
 
   ![micint]({{ page.images_base | relative_url }}/29.png)
 
-- **Paso 36.** Elimina todos los contenedores detenidos. Cuando aparezca la pregunta escribe **N**, el contenedor se eliminará manualmente.
+- **Paso 36.** Elimina todos los contenedores detenidos. Cuando aparezca la pregunta, escribe **N**. El contenedor se eliminará manualmente.
 
   > **Nota.** Este comando es útil para liberar espacio en disco ocupado por contenedores que ya no se están ejecutando y no están destinados a reiniciarse.
   {: .lab-note .info .compact}
