@@ -13,7 +13,7 @@ prerequisites:
   - Terminal **Git Bash** dentro de VS Code
   - Conocimientos básicos de Node.js, Docker y Kubernetes
 introduction:
- Un **Ingress** expone servicios HTTP/HTTPS externamente y permite **enrutamiento L7** (por host o por path). En Minikube, puedes usar `minikube addons enable ingress` para desplegar **NGINX Ingress Controller**. En esta práctica, publicarás **dos apps Node.js** detrás de **un solo Ingress**. Todas las peticiones a `/app1` irán al **Service app1** y las de `/app2` al **Service app2**. Así, verás cómo consolidar múltiples servicios bajo un único punto de entrada.
+ Un **Ingress** expone servicios HTTP/HTTPS externamente y permite **enrutamiento L7** (por host o por path). En Minikube, puedes usar ` addons enable ingress` para desplegar **NGINX Ingress Controller**. En esta práctica, publicarás **dos apps Node.js** detrás de **un solo Ingress**. Todas las peticiones a `/app1` irán al **Service app1** y las de `/app2` al **Service app2**. Así, verás cómo consolidar múltiples servicios bajo un único punto de entrada.
 slug: lab12
 lab_number: 12
 final_result: >
@@ -27,7 +27,7 @@ references:
   - text: Ingress
     url: https://kubernetes.io/docs/concepts/services-networking/ingress/
   - text: Minikube addon
-    url: https://minikube.sigs.k8s.io/docs/commands/addons/
+    url: https://.sigs.k8s.io/docs/commands/addons/
   - text: Anotaciones de NGINX Ingress
     url: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
   - text: Services
@@ -281,7 +281,7 @@ Compilar dos imágenes (una por app) usando el **daemon de Docker de Minikube**,
   EXPOSE 3000
   CMD ["node", "server.js"]
   ```
-- **Paso 21.** Recuerda encender siempre **minikube**. Escribe el siguiente comando.
+- **Paso 21.** Recuerda encender siempre **Minikube**. Escribe el siguiente comando.
 
   > **Nota.** Espera unos segundos mientras finaliza el proceso de inicialización.
   {: .lab-note .info .compact}
@@ -439,7 +439,7 @@ Crear un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. E
         targetPort: 3000
   ```
 
-- **Paso 29.** Ahora, aplica todos los objetos juntos **deployments** y **service**.
+- **Paso 29.** Ahora, aplica todos los objetos juntos, **deployments** y **service**.
 
   > **Nota.** Los **selectors** (`app: app1` / `app: app2`) conectan Services con sus pods. El Ingress enviará tráfico a `app1-svc:80` y `app2-svc:80`.
   {: .lab-note .info .compact}
