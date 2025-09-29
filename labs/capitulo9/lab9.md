@@ -14,7 +14,7 @@ prerequisites:
   - Conocimientos básicos de Node.js, Docker y Kubernetes
   - Cuenta en Docker Hub
 introduction:
-  En Kubernetes, separar **código** de **configuración** y **credenciales** es una práctica esencial. Los **ConfigMaps** almacenan configuración **no sensible** (por ejemplo: *feature flags*, títulos, endpoints), mientras que los **Secrets** guardan **datos sensibles** (tokens, claves, contraseñas) codificados en **Base64**. Los **controladores** como **Deployment**, **Job** y **CronJob** permiten mantener réplicas estables, ejecutar tareas únicas o periódicas. En este laboratorio, montarás una app que lee un archivo `config.json` desde un ConfigMap y un `SECRET_TOKEN` desde un Secret y, además, crearás un Job y un CronJob de validación.
+  En Kubernetes, separar **código** de **configuración** y **credenciales** es una práctica esencial. Los **ConfigMaps** almacenan configuración **no sensible** (por ejemplo, *feature flags*, títulos, endpoints), mientras que los **Secrets** guardan **datos sensibles** (tokens, claves, contraseñas) codificados en **Base64**. Los **controladores** como **Deployment**, **Job** y **CronJob** permiten mantener réplicas estables, ejecutar tareas únicas o periódicas. En este laboratorio, montarás una app que lee un archivo `config.json` desde un ConfigMap y un `SECRET_TOKEN` desde un Secret y, además, crearás un Job y un CronJob de validación.
 slug: lab9
 lab_number: 9
 final_result: >
