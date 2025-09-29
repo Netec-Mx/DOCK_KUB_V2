@@ -43,7 +43,7 @@ next: /capitulo1/lab1/
 
 ### Tarea 1. Estructura del proyecto
 
-Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes y el recurso Ingress.
+Preparar carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes y el recurso Ingress.
 
 #### Tarea 1.1
 
@@ -180,7 +180,7 @@ Prepararás carpetas y archivos de ambas aplicaciones, manifiestos de Kubernetes
 
 ### Tarea 2. Implementar app1 y app2 (Node.js)
 
-Crearás dos API muy simples con rutas `/` (mensaje) y `/health` (probes). Se distinguirán por el contenido.
+Crear dos API muy simples con rutas `/` (mensaje) y `/health` (probes). Se distinguirán por el contenido.
 
 #### Tarea 2.1. (app1)
 
@@ -337,7 +337,7 @@ Compilarás dos imágenes (una por app) usando el **daemon de Docker de Minikube
 
 ### Tarea 4. Deployment y Service (ClusterIP) para cada app
 
-Crearás un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. El Ingress los referenciará por nombre y puerto.
+Crear un Deployment **(réplicas=2)** y un Service **ClusterIP** por cada app. El Ingress los referenciará por nombre y puerto.
 
 #### Tarea 4.1. (app1)
 
