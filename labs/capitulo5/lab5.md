@@ -612,7 +612,7 @@ Validar que la BD no es accesible desde el host y que la resolución DNS funcion
 
 - **Paso 37.** Prueba la resolución desde `frontend-net` (sin backend).
 
-  > **Nota.** Se descargará la imagen ya que no existe. Debe **fallar** la resolución de `db` **(no comparten red)**.
+  > **Nota.** Se descargará la imagen, ya que no existe. Debe **fallar** la resolución de `db` **(no comparten red)**.
   {: .lab-note .info .compact}
 
   ```bash
