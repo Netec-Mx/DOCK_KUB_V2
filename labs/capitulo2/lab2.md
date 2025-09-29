@@ -392,7 +392,7 @@ Listar, buscar, descargar y eliminar imágenes Docker para gestionar eficienteme
 
 ## Tarea 7. Comandos adicionales de administración
 
-En esta tarea crearás un contenedor con nombre, revisarás procesos y limpiarás recursos para administrar mejor Docker.
+Crear un contenedor con nombre, revisar procesos y limpiar recursos para administrar mejor Docker.
 
 ### Tarea 7.1
 
@@ -480,7 +480,7 @@ En esta tarea crearás un contenedor con nombre, revisarás procesos y limpiará
 
 ## Tarea 8. Documentación final en README.md
 
-En esta tarea documentarás los comandos esenciales de Docker en un archivo **README.md** para consolidar la práctica.
+Documentar los comandos esenciales de Docker en un archivo **README.md** para consolidar la práctica.
 
 ### Tarea 8.1
 
