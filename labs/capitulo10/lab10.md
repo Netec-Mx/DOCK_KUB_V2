@@ -169,7 +169,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 ### Tarea 2. Implementar la agenda (API + UI) con persistencia a archivo
 
-Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los datos se guardan en **`/data/contacts.json`** para luego montar un PVC.
+Construir una API Express (endpoints CRUD mínimos) y una UI simple. Los datos se guardan en **`/data/contacts.json`** para luego montar un PVC.
 
 #### Tarea 2.1
 
@@ -446,7 +446,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
 ### Tarea 4. Namespace y PVC (almacenamiento persistente)
 
-Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en modo `ReadWriteOnce`.
+Crear un namespace para aislar recursos y un PVC que solicite **1Gi** en modo `ReadWriteOnce`.
 
 #### Tarea 4.1
 
