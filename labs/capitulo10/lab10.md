@@ -13,7 +13,7 @@ prerequisites:
   - Terminal **Git Bash** dentro de VS Code
   - Conocimientos básicos de Node.js, Docker y Kubernetes
 introduction:
-  Un **PersistentVolume (PV)** representa almacenamiento físico (disco local/nube). Un **PersistentVolumeClaim (PVC)** es la **solicitud** de almacenamiento por parte de una app. Cuando montas un PVC en un pod, los datos sobreviven a reinicios, reprogramaciones y actualizaciones de imagen. Convertiremos la **agenda efímera** parecida a la de la Práctica 1 en una **agenda persistente**, más cercana a producción.
+  Un **PersistentVolume (PV)** representa almacenamiento físico (disco local o nube). Un **PersistentVolumeClaim (PVC)** es la **solicitud** de almacenamiento por parte de una app. Cuando montas un PVC en un pod, los datos sobreviven a reinicios, reprogramaciones y actualizaciones de imagen. Convertiremos la **agenda efímera** parecida a la de la Práctica 1 en una **agenda persistente**, más cercana a producción.
 slug: lab10
 lab_number: 10
 final_result: >
@@ -48,17 +48,17 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 1.** Inicia sesión en tu máquina de trabajo como usuario con permisos administrativos.  
 
-- **Paso 2.** Abre el **`Visual Studio Code`** lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
+- **Paso 2.** Abre el **`Visual Studio Code`**. Lo puedes encontrar en el **Escritorio** del ambiente o puedes buscarlo en las aplicaciones de Windows.
 
-- **Paso 3.** Una vez abierto **VS Code** da clic en el icono de la imagen para abrir la terminal, se encuentra en la parte superior derecha.
+- **Paso 3.** Una vez abierto **VS Code**, da clic en el icono de la imagen para abrir la terminal. Se encuentra en la parte superior derecha.
 
   ![micint]({{ page.images_base | relative_url }}/18.png)
 
-- **Paso 4.** Usa la terminal de **`Git Bash`**, da clic como lo muestra la imagen.
+- **Paso 4.** Usa la terminal de **`Git Bash`**. Da clic como lo muestra la imagen.
 
   ![micint]({{ page.images_base | relative_url }}/19.png)
 
-- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**:
+- **Paso 5.** Asegúrate de estar dentro de la carpeta del curso llamada **dockerlabs** en la terminal de **VS Code**.
 
   > **Nota.** Si te quedaste en el directorio de una práctica, usa **`cd ..`** para volver a la raíz de laboratorios.
   {: .lab-note .info .compact}
@@ -74,17 +74,17 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
   mkdir lab10-k8spvcagenda && cd lab10-k8spvcagenda
   ```
 
-- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio:
+- **Paso 7.** Valida en el **Explorador** de archivos dentro de VS Code que se haya creado el directorio.
 
   > **Nota.** Trabajar en VS Code permite editar y versionar cómodamente. **Git Bash** brinda compatibilidad con comandos POSIX.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
-- **Paso 8.** Esta sera la estructura de los directorios de la aplicación:
+- **Paso 8.** Esta será la estructura de los directorios de la aplicación.
 
   > **Notas**  
-  - Separar `app/` (código) 
+  - Separar `app/` (código). 
   - `k8s/` agrupa todos los manifiestos. 
   {: .lab-note .info .compact}
   
@@ -106,14 +106,14 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
 
 - **Paso 9.** Ahora, crea la carpeta **app/** y sus archivos vacíos.
 
-  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**
+  > **Nota.** El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**.
   {: .lab-note .info .compact}
 
   ```bash
   mkdir -p app app/public && touch app/package.json app/server.js app/public/index.html
   ```
 
-- **Paso 10.** Muy bien. Continúa la cración del directorio **k8s/** con los manifiestos vacíos.
+- **Paso 10.** Muy bien. Continúa la creación del directorio **k8s/** con los manifiestos vacíos.
 
   > **Nota.**  El comando se ejecuta desde la raíz de la carpeta **lab10-k8spvcagenda**. Estos comandos ya crean los directorios y archivos.
   {: .lab-note .info .compact}
@@ -131,7 +131,7 @@ Organizar carpetas para separar el código de la app y los manifiestos de Kubern
   touch .dockerignore Dockerfile
   ```
 
-- **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias:
+- **Paso 12.** Agrega el siguiente contenido al archivo **.dockerignore** para construir imágenes limpias.
 
   > **Nota.** Reduce el **contexto de build** y acelera las compilaciones evitando subir archivos innecesarios al daemon de Docker.
   {: .lab-note .info .compact}
@@ -173,7 +173,7 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
 
 #### Tarea 2.1
 
-- **Paso 14.** Dentro del archivo `app/package.json` agrega las siguientes dependencias.
+- **Paso 14.** Dentro del archivo `app/package.json`, agrega las siguientes dependencias.
 
   > **Notas** 
   - `express` sirve la API/UI.
@@ -272,9 +272,9 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
   });
   ```
 
-- **Paso 16.** Dentro del archivo `app/public/index.html` agrega el código para la página web y estilos sencillos.
+- **Paso 16.** Dentro del archivo `app/public/index.html`, agrega el código para la página web y estilos sencillos.
 
-  > **Nota.** UI mínima para **crear/listar/eliminar**. Perfecta para verificar persistencia fácilmente.
+  > **Nota.** UI mínima para **crear, listar o eliminar**. Perfecta para verificar persistencia fácilmente.
   {: .lab-note .info .compact}
   
   ```html
@@ -359,7 +359,7 @@ Construirás una API Express (endpoints CRUD mínimos) y una UI simple. Los dato
 
 ---
 
-### Tarea 3. Dockerfile build, tag y push.
+### Tarea 3. Dockerfile build, tag y push
 
 Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en el clúster de Minikube.
 
@@ -387,7 +387,7 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
   CMD ["node", "server.js"]
   ```
 
-- **Paso 18.** Recuerda que debes estar autenticado a tu cuenta de **Docker Hub**.
+- **Paso 18.** Asegúrate de haber autenticado tu cuenta de **Docker Hub**.
 
   - Si ya tienes cuenta, da clic [**AQUÍ - Iniciar Sesión**](https://login.docker.com/u/login/identifier?state=hKFo2SB1QXpUSzVVc3ZDYTAzQzlkWlFoYk9LWnlLZ1VOMzNnU6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGx0SFpVWDNQTzNPaFZlT1FxVDlWZUpzdWUya09FaWtjo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk)
   - Si no tienes cuenta, da clic [**AQUÍ - Crear cuenta**](https://app.docker.com/signup?_gl=1*1ugpfey*_gcl_au*OTcyNTkxNjkyLjE3NTc2MDY4MTU.*_ga*MTQxMjc1NjI4My4xNzU3NjA2ODE1*_ga_XJWPQMJYHQ*czE3NTc2MTE1NTQkbzIkZzEkdDE3NTc2MTE1NTQkajYwJGwwJGgw)
@@ -401,11 +401,11 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
   docker login
   ```
 
-- **Paso 20.** Compila la imagen. Escribe el siguiente comando:
+- **Paso 20.** Compila la imagen. Escribe el siguiente comando.
 
   > **Notas**
   - El comando se ejecuta dentro del directorio raíz **lab10-k8spvcagenda**.
-  - Ajusta las rutas si es necesario
+  - Ajusta las rutas si es necesario.
   {: .lab-note .info .compact}
 
   ```bash
@@ -417,8 +417,8 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 - **Paso 21.** Ahora, etiqueta la imagen y súbela al repositorio remoto en **Docker Hub**.
 
   > **Notas**
-  - Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, **puede ser el mismo que usaste en la práctica anterior**
-  - El comando no dara salida a menos que haya un error.
+  - Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, **puede ser el mismo que usaste en la práctica anterior**.
+  - El comando no dará salida a menos que haya un error.
   {: .lab-note .info .compact}
 
   ```bash
@@ -427,9 +427,9 @@ Crear imagen Docker, compilarla y subirla al repositorio remoto para reusarla en
 
   ![micint]({{ page.images_base | relative_url }}/5.png)
 
-- **Paso 22.** Si todo sale bien, el siguiente comando subira la imagen al repositorio remoto:
+- **Paso 22.** Si todo sale bien, el siguiente comando subirá la imagen al repositorio remoto.
 
-  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior
+  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior.
   {: .lab-note .info .compact}
 
   ```bash
@@ -464,9 +464,9 @@ Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en m
       app: agenda
   ```
 
-- **Paso 24.** Primero asegúrate de encender siempre minikube. Escribe el siguiente comando.
+- **Paso 24.** Primero, asegúrate de encender siempre Minikube. Escribe el siguiente comando.
 
-  > **Nota.** Espera unos segundos en lo que termina de inicializar.
+  > **Nota.** Espera unos segundos mientras finaliza el proceso de inicialización.
   {: .lab-note .info .compact}
 
   ```bash
@@ -479,7 +479,7 @@ Crearás un namespace para aislar recursos y un PVC que solicitará **1Gi** en m
   kubectl apply -f k8s/namespace.yaml
   ```
 
-- **Paso 26.** Verifica que se haya creado correctamente el **Namespace**
+- **Paso 26.** Verifica que se haya creado correctamente el **namespace**.
 
   ```bash
   kubectl get ns agenda-pvc
@@ -608,7 +608,7 @@ Crear un Deployment (1 réplica) que **monte el PVC** en `/data`. Añadir **prob
 
 - **Paso 32.** Verifica que el pod esté corriendo correctamente.
 
-  > **Nota.** Deberias observar `Running` y `READY 1/1`  
+  > **Nota.** Deberías observar `Running` y `READY 1/1`  
   {: .lab-note .info .compact}
 
   ```bash
@@ -626,7 +626,7 @@ Crear un Deployment (1 réplica) que **monte el PVC** en `/data`. Añadir **prob
 
 - **Paso 34.** Revisa los detalles del pod.
 
-  > **Nota.** Identifica la sección **`Mounts`** y **`Volumes`**
+  > **Nota.** Identifica la sección **`Mounts`** y **`Volumes`**.
   {: .lab-note .info .compact}
 
   ```bash
@@ -647,7 +647,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
 #### Tarea 6.1
 
-- **Paso 35.** Dentro del archivo `k8s/service.yaml` agrega la siguiente definición de exposición.
+- **Paso 35.** Dentro del archivo `k8s/service.yaml`, agrega la siguiente definición de exposición.
 
   > **Nota.** La propiedad `NodePort` expone rápidamente el servicio sin requerir Ingress.
   {: .lab-note .info .compact}
@@ -674,7 +674,7 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
   kubectl apply -f k8s/service.yaml
   ```
  
-- **Paso 37.** Ejecuta el siguiente comando para obtener la URL de exposición 
+- **Paso 37.** Ejecuta el siguiente comando para obtener la URL de exposición. 
 
   ```bash
   minikube service agenda-svc -n agenda-pvc --url
@@ -683,20 +683,20 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 - **Paso 38.** Abre la URL en el navegador.
 
   > **Notas**
-  - Crea **2–3 contactos**.  
+  - Crea **2 o 3 contactos**.  
   - Actualiza y verifica que se listan. 
   - Con esto validamos que **API + UI** funcionan antes de probar persistencia.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/11.png)
 
-- **Paso 39.** En la terminal que ocupa el proceso **minikube service** ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 39.** En la terminal que ocupa el proceso **Minikube service** ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
 - **Paso 40.** Reinicia el pod para probar persistencia.
 
   > **Notas**
   - Espera a que el nuevo pod esté `Running`/`READY 1/1`.
-  - Rompe el proceso de verificación con **`CTRL + c`**
+  - Rompe el proceso de verificación con **`CTRL + c`**.
   {: .lab-note .info .compact}
 
   ```bash
@@ -709,8 +709,8 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 - **Paso 41.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí.
 
   > **Notas**
-  - Si todo salió bien debes ver tus contactos.
-  - El **minikube service** asignara un nuevo puerto
+  - Si todo salió bien, debes ver tus contactos.
+  - El **Minikube service** asignará un nuevo puerto.
   {: .lab-note .info .compact}
 
   ```bash
@@ -719,11 +719,11 @@ Exponer la app con un **Service NodePort** y demostrar que los datos **persisten
 
   ![micint]({{ page.images_base | relative_url }}/13.png)
 
-- **Paso 42.** En la terminal que ocupa el proceso **minikube service** ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 42.** En la terminal que ocupa el proceso **Minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
-- **Paso 43.** También puedes inspeccionar los datos dentro del pod por CLI:
+- **Paso 43.** También puedes inspeccionar los datos dentro del pod por CLI.
 
-  > **Nota.** El contenedor se destruye/recrea, **pero el PVC permanece**. Por eso el archivo vuelve a estar con tus datos.
+  > **Nota.** El contenedor se destruye o recrea, **pero el PVC permanece**. Por eso, el archivo vuelve a estar con tus datos.
   {: .lab-note .info .compact}
 
   ```bash
@@ -745,11 +745,11 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 #### Tarea 7.1
 
-- **Paso 44.** En el archivo `app/public/index.html` reemplaza todo el código existente por este nuevo.
+- **Paso 44.** En el archivo `app/public/index.html`, reemplaza todo el código existente por este nuevo.
 
   > **Notas**
-  - Cambios de estilos en los titulos, botones (Simula una nueva versión)
-  - Cambio en el titulo de la aplicación
+  - Cambios de estilos en los títulos y botones (simula una nueva versión).
+  - Cambio en el título de la aplicación.
   {: .lab-note .info .compact}
 
   ```html
@@ -843,17 +843,17 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 - **Paso 46.** Ahora, etiqueta la nueva imagen creada.
 
   > **Notas**
-  - Sustituye `TU_USUARIO/TU_REPOSITORIO` por el de tu cuenta, **puede ser el mismo que usaste en la práctica anterior**
-  - El comando no dara salida a menos que haya un error.
+  - Sustituye `TU_USUARIO/TU_REPOSITORIO` por el de tu cuenta, **puede ser el mismo que usaste en la práctica anterior**.
+  - El comando no dará salida, a menos que haya un error.
   {: .lab-note .info .compact}
 
   ```bash
   docker tag agendapvc:1.1 TU_USUARIO/TU_REPOSITORIO:agendapvc-v1.1
   ```
 
-- **Paso 47.** Sube la imagen a tu repositorio remoto:
+- **Paso 47.** Sube la imagen a tu repositorio remoto.
 
-  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior
+  > **Nota.** Sustituye **`TU_USUARIO/TU_REPOSITORIO`** por el de tu cuenta, puede ser el mismo que usaste en la práctica anterior.
   {: .lab-note .info .compact}
 
   ```bash
@@ -863,9 +863,9 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 - **Paso 48.** Abre el archivo `k8s/deployment.yaml` para ajustar a la nueva imagen.
 
   > **Notas**
-  - En la **línea 24** del archivo solo agrega al final `-v1.1`.
-  - Quizás la línea pueda variar, si es asi identificala.
-  - Puedes apoyarte de la imagen, cuidado de no borrar nada más.
+  - En la **línea 24** del archivo, agrega al final `-v1.1`.
+  - Quizás la línea pueda variar, si es así, identifícala.
+  - Puedes apoyarte de la imagen. Asegúrate de no borrar nada más.
   {: .lab-note .info .compact}
 
   ![micint]({{ page.images_base | relative_url }}/15.png)
@@ -876,11 +876,11 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
    kubectl apply -f k8s/deployment.yaml
    ```
 
-- **Paso 50.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí ahora con el **nuevo diseño**.
+- **Paso 50.** Levanta el servicio, abre la aplicación y verifica que **los contactos siguen** ahí, ahora con el **nuevo diseño**.
 
   > **Notas**
-  - Recuerda abrir la URL que entrega **minikube service**
-  - Si todo salió bien debes ver tus contactos.
+  - Recuerda abrir la URL que entrega **minikube service**.
+  - Si todo salió bien, debes ver tus contactos.
   {: .lab-note .info .compact}
 
   ```bash
@@ -889,7 +889,7 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
   ![micint]({{ page.images_base | relative_url }}/16.png)
 
-- **Paso 51.** En la terminal que ocupa el proceso **minikube service** ejecuta `CTRL + c` cuando termines de probar la aplicación.
+- **Paso 51.** En la terminal que ocupa el proceso **minikube service**, ejecuta `CTRL + c` cuando termines de probar la aplicación.
 
 {% assign results = site.data.task-results[page.slug].results %}
 {% capture r1 %}{{ results[6] }}{% endcapture %}
@@ -899,11 +899,11 @@ Simular una actualización de la app (cambio visual menor) y realizar un **rolli
 
 ### Tarea 8. Limpieza de recursos
 
-Siempre es importante detener y eliminar recursos creados que no se usaran.
+Siempre es importante detener y eliminar recursos creados que no se usarán.
 
 #### Tarea 8.1
 
-- **Paso 52.** Ejecuta el siguiente comando que limpiara todo lo creado en el clúster.
+- **Paso 52.** Ejecuta el siguiente comando que limpiará todo lo creado en el clúster.
 
   > **Nota.** Puede tardar unos segundos.
   {: .lab-note .info .compact}
@@ -915,7 +915,7 @@ Siempre es importante detener y eliminar recursos creados que no se usaran.
 - **Paso 53.** Verifica que esté limpio.
 
   > **Notas**
-  - `service/kubernetes` no se borra es parte del clúster.
+  - `service/kubernetes` no se borra, es parte del clúster.
   - Verifica que ya no aparezca **agenda-pvc** como namespace.
   {: .lab-note .info .compact}
 
