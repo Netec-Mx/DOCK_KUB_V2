@@ -214,7 +214,7 @@ Construir la imagen en el **daemon de Docker de Minikube** para usarla directame
   CMD ["node", "server.js"]
   ```
 
-- **Paso 17.** Recuerda encender siempre **minikube**. Escribe el siguiente comando.
+- **Paso 17.** Recuerda encender siempre **Minikube**. Escribe el siguiente comando.
 
   > **Nota.** Espera unos segundos mientras finaliza el proceso de inicialización.
   {: .lab-note .info .compact}
@@ -327,13 +327,13 @@ Crear el **Deployment** (dos réplicas) y el **Service** de tipo **ClusterIP** p
         targetPort: 3000 # Puerto del contenedor
   ```
 
-- **Paso 24.** Ejecuta la configuración del archivo service. Escribe el siguiente comando.
+- **Paso 24.** Ejecuta la configuración del archivo Service. Escribe el siguiente comando.
 
    ```bash
    kubectl apply -f k8s/service.yaml
    ```
    
-- **Paso 25.** Verifica que el service esté corriendo correctamente.
+- **Paso 25.** Verifica que el Service esté corriendo correctamente.
 
   > **Nota.** Debes ver Service tipo **ClusterIP** sin External-IP.
   {: .lab-note .info .compact}
@@ -419,7 +419,7 @@ Lanzar pods **cliente** para consumir la API a través del **nombre DNS del Serv
 - **Paso 30.** Dentro del pod, ejecuta los siguientes comandos.
 
   > **Notas**
-  - En el resultado, la IP debe ser la misma que observaste en el detalle del service.
+  - En el resultado, la IP debe ser la misma que observaste en el detalle del Service.
   - Es normal que veas los mensajes **server can't find...** ya que intenta buscar resolverlo de diferentes formas.
   {: .lab-note .info .compact}
 
@@ -574,7 +574,7 @@ Eliminar los objetos creados para dejar el clúster limpio.
 
 - **Paso 39.** Borra pods efímeros (si quedó alguno) y namespace de pruebas.
 
-  > **Nota.** Estos pods fueron eliminados por la etiqueta `--rm`, pero por si quedaron, elimínalos.
+  > **Nota.** Estos pods fueron eliminados por la etiqueta `--rm`, en caso de que alguno haya quedado, elimínalo.
   {: .lab-note .info .compact}
 
   ```bash
