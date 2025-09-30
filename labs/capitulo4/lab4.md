@@ -538,7 +538,7 @@ Crear un **volumen** administrado por Docker y ejecutar la app montándolo en `/
 
   ![micint]({{ page.images_base | relative_url }}/9.png) 
 
-- **Paso 28.** Ejecuta el contenedor usando el volumen que se acaba de crear.
+- **Paso 28.** Ejecuta el siguiente comando en la terminal para que el contenedor use el volumen que se acaba de crear.
 
   > **Nota.** Monta el volumen en la ruta que el backend espera para guardar la BD.
   {: .lab-note .info .compact}
