@@ -16,7 +16,7 @@ lab2:
     - "**Resultado esperado.** Generaste un `README.md` con la lista de comandos Docker usados, dejando una referencia clara y organizada."
 lab3:
   results:
-    - "**Resultado esperado.** Entorno de trabajo listo para comenzar la creacion de archivos."
+    - "**Resultado esperado.** Entorno de trabajo listo para comenzar la creación de archivos."
     - "**Resultado esperado.** Carpeta de backend integrada correctamente en el nuevo directorio."
     - "**Resultado esperado.** Carpeta de frontend integrada correctamente en el nuevo directorio."
     - "**Resultado esperado.** Imagen funcional pero de mayor tamaño."
