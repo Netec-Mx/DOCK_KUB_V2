@@ -54,7 +54,7 @@ lab6:
     - "**Resultado esperado.** Dockerfile listo para build."
     - "**Resultado esperado.** Compose listo para levantar el stack."
     - "**Resultado esperado.** Stack operativo y accesible desde el navegador."
-    - "**Resultado esperado.** API escalada mediante docker compose."
+    - "**Resultado esperado.** API escalada mediante Docker Compose."
     - "**Resultado esperado.** Entorno limpio y listo para la siguiente práctica."
 lab7:
   results:
@@ -91,7 +91,7 @@ lab10:
   results:
     - "**Resultado esperado.** Estructura creada y lista para implementar."
     - "**Resultado esperado.** App lista para contenerizar y montar PVC."
-    - "**Resultado esperado.** Imagen compilada y disponible en el repositorio remoto lista para ser usada en el clúster de Minikube."
+    - "**Resultado esperado.** Imagen compilada y disponible en el repositorio remoto lista para usarse en el clúster de Minikube."
     - "**Resultado esperado.** Namespace creado y PVC ligado a un PV (`Bound`)."
     - "**Resultado esperado.** Pod saludable y con volumen `/data` montado correctamente."
     - "**Resultado esperado.** Acceso externo OK y **persistencia verificada** tras reinicio exitoso."
@@ -105,7 +105,7 @@ lab11:
     - "**Resultado esperado.** Deployment arriba con dos pods `Running` y Service `clusterip-app-svc` creado sin exposición externa."
     - "**Resultado esperado.** Respuestas HTTP válidas desde `/hello` y resolución de nombres correcta vía `nslookup`."
     - "**Resultado esperado.** En `pruebas-dns`, el nombre corto falla, FQDN resuelve y `/hello` responde correctamente."
-    - "**Resultado esperado.** No hay forma directa de acceder desde el host; solo desde pods dentro del clúster."
+    - "**Resultado esperado.** No hay forma directa de acceder desde el host, solo desde pods dentro del clúster."
     - "**Resultado esperado.** No quedan pods, services o deployments del laboratorio."
 lab12:
   results:
