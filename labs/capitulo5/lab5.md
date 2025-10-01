@@ -400,7 +400,7 @@ Crear redes y ejecutar PostgreSQL conectado **solo a `backend-net`**. Montar el 
   --network backend-net \
   -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_USER=postgres \
-  -v "$(pwd)"/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro \ postgres:16-alpine
+  -v "$(pwd)"/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro postgres:16-alpine
   ```
 
   ![micint]({{ page.images_base | relative_url }}/7.png)
