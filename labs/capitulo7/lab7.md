@@ -21,9 +21,9 @@ final_result: >
   Una aplicación **Node.js con UI en tiempo real** (Socket.IO) desplegada en **Minikube**, parametrizada con **ConfigMap**, con **Deployment** (probes y escalable) y **Service NodePort**. Acceso desde navegador, validación con `kubectl` y comprensión del efecto de múltiples réplicas sobre el estado en memoria.
 notes: 
   - En producción usarías **Ingress** (con `minikube addons enable ingress`) y **TLS**.
-  - Para estado compartido entre Pods, integra un almacén externo (Redis/BD) o un Pub/Sub.
+  - Para estado compartido entre pods, integra un almacén externo (Redis/BD) o un Pub/Sub.
   - Versiona los manifiestos en Git y automatiza `kubectl apply` con CI/CD.
-  - Si tu Minikube no enruta al azar entre Pods, puedes simularlo refrescando o usando `kubectl port-forward` a distintos Pods.
+  - Si tu Minikube no enruta al azar entre pods, puedes simularlo refrescando o usando `kubectl port-forward` a distintos pods.
 references:
   - text: Deployments
     url: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -81,7 +81,7 @@ Organizar el código, la configuración de Kubernetes y el Dockerfile para empaq
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
-- **Paso 8.** Crearás la siguiente estructura inicial del proyecto de la aplicación.
+- **Paso 8.** Crea la siguiente estructura inicial del proyecto de la aplicación.
 
   > **Notas**  
   - `public/` contiene la UI estática que Express servirá.
