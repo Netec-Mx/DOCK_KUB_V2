@@ -87,7 +87,7 @@ Organizar carpetas y archivos para la app, manifiestos de K8s y configuración p
 
   ![micint]({{ page.images_base | relative_url }}/2.png)
 
-- **Paso 8.** Crearás la siguiente estructura inicial del proyecto de la aplicación.
+- **Paso 8.** Crea la siguiente estructura inicial del proyecto de la aplicación.
 
   > **Notas**  
   - `base/` contiene manifests genéricos.  
@@ -821,7 +821,7 @@ Aplicar los manifests base en `dev` y `prod`, ajustando variables y SA.
 
   ![micint]({{ page.images_base | relative_url }}/26.png)
 
-#### Tarea 7.2 (prod)
+#### Tarea 7.2. (prod)
 
 - **Paso 54.** Ahora, en la terminal de VS Code detén el servicio corriendo para **dev** escribe `CTRL + c` y escribe el siguiente comando.
 
