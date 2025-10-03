@@ -371,7 +371,9 @@ Crear un **ConfigMap** con `config.json` (montado como archivo) y un **Secret** 
 
 - **Paso 24.** Ahora, aplica los manifiestos **ConfigMap y Secret**.
 
-  > **Importante.** El comando **`cd ..`** te regresará un nivel de directorio para que puedas aplicar los manifiestos.
+  > **NOTA.** El comando **`cd ..`** te regresará un nivel de directorio para que puedas aplicar los manifiestos.
+  {: .lab-note .info .compact}
+  > **IMPORTANTE:** Recuerda encender tu **Minikube** con el comando **`minikube start`**
   {: .lab-note .important .compact}
 
   ```bash
